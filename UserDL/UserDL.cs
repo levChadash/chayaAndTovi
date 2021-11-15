@@ -3,17 +3,18 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace DL
 {
     public class UserDL : IUserDL
     {
-        public async Task <user> getUser(string email, string password)//
+        public async Task <user> getUser(string email, string password)
         {
-            using (StreamReader asyncreader = System.IO.File.OpenText("M:/webAPI/MyFirstWebApiSite/user.txt"))
+            using (StreamReader reader = System.IO.File.OpenText("M:/webAPI/MyFirstWebApiSite/user.txt"))
             {
                 string currentUser;
-                while ((currentUser = await asyncreader.ReadLine()) != null)
+                while ((currentUser = await reader.ReadLineAsync()) != null)
                 {
 
                     user user = JsonSerializer.Deserialize<user>(currentUser);
