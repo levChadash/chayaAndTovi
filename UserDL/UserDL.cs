@@ -8,12 +8,12 @@ namespace DL
 {
     public class UserDL : IUserDL
     {
-        public user getUser(string email, string password)
+        public async Task <user> getUser(string email, string password)
         {
-            using (StreamReader reader = System.IO.File.OpenText("M:/webAPI/MyFirstWebApiSite/user.txt"))
+            using (StreamReader asyncreader = System.IO.File.OpenText("M:/webAPI/MyFirstWebApiSite/user.txt"))
             {
                 string currentUser;
-                while ((currentUser = reader.ReadLine()) != null)
+                while ((currentUser = await asyncreader.ReadLine()) != null)
                 {
 
                     user user = JsonSerializer.Deserialize<user>(currentUser);
