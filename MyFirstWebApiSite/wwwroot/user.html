@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body <!--onload="func()"-->>
+
+    <div>
+        <label style="font-size:x-large; shape-margin:initial">email</label>
+        <br />
+        <input type="text" id="em" />
+        <br />
+        <label style="font-size: x-large; shape-margin: initial "> password</label>
+        <br />
+        <input type="text" id="ps" />
+        <br />
+        <button name="lg" onclick="logIn()" style="font-size: larger; color: azure; background-color: blue;"> log  in </button>
+      
+        <button name="newU" onclick="newUser()" style="font-size:medium; color: azure; background-color: blue; ">new user</button>
+    </div>
+<div style="display:none" id="divNewU">
+    <label>email</label>
+    <input type="text" id="email" />
+    <br />
+    <label>firstName</label>
+    <input type="text" id="fName" />
+    <br />
+    <label>lastName</label>
+    <input type="text" id="lName" />
+    <br />
+    <label>password</label>
+    <input type="text" id="psw" />
+    <br />
+    <button name="register" onclick="register()">register</button>
+</div>
+
+</bodyonl>
+     <script src="user.js"></script>
+</html>
