@@ -1,6 +1,7 @@
 ﻿using Entity;
 using System;
 using DL;
+using System.Threading.Tasks;
 
 namespace BL
 {
@@ -11,15 +12,15 @@ namespace BL
         {
             this.userdl = userdl;
         }
-        public user getUser(string email, string password)
+        public async Task<user> getUser(string email, string password)
         {
 
-            return userdl.getUser(email, password);
+            return await userdl.getUser(email, password);
         }
 
-        public user postUser(user u)
+        public async Task<user> postUser(user u)
         {
-            return userdl.postUser(u);
+            return await userdl.postUser(u);
         }
         public void putUser(int id, user u)
         {

@@ -24,22 +24,22 @@ namespace DL
             }
             return null;
         }
-        public user postUser(user u)
+        public async Task<user> postUser(user u)
         {
-            int numberOfUsers = System.IO.File.ReadLines("M:/webAPI/MyFirstWebApiSite/user.txt").Count();
+            int numberOfUsers =  System.IO.File.ReadLines("M:/webAPI/MyFirstWebApiSite/user.txt").Count();
             u.id = numberOfUsers + 1;
             string userJson = JsonSerializer.Serialize(u);
-            System.IO.File.AppendAllText("M:/webAPI/MyFirstWebApiSite/user.txt", userJson + Environment.NewLine);
+          await  System.IO.File.AppendAllTextAsync("M:/webAPI/MyFirstWebApiSite/user.txt", userJson + Environment.NewLine);
             return u;
         }
-        public void putUser(int id, user u)
+        public async void putUser(int id, user u)
         {
 
             string textToReplace = "";
             using (StreamReader reader = System.IO.File.OpenText("M:/webAPI/MyFirstWebApiSite/user.txt"))
             {
                 string currentUser;
-                while ((currentUser = reader.ReadLine()) != null)
+                while ((currentUser =await reader.ReadLineAsync()) != null)
                 {
 
                     user user = JsonSerializer.Deserialize<user>(currentUser);
@@ -50,9 +50,9 @@ namespace DL
 
             if (textToReplace != string.Empty)
             {
-                string text = System.IO.File.ReadAllText("M:/webAPI/MyFirstWebApiSite/user.txt");
+                string text =await System.IO.File.ReadAllTextAsync("M:/webAPI/MyFirstWebApiSite/user.txt");
                 text = text.Replace(textToReplace, JsonSerializer.Serialize(u));
-                System.IO.File.WriteAllText("M:/webAPI/MyFirstWebApiSite/user.txt", text);
+               await System.IO.File.WriteAllTextAsync("M:/webAPI/MyFirstWebApiSite/user.txt", text);
             }
 
 

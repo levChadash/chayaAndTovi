@@ -34,10 +34,10 @@ namespace MyFirstWebApiSite.Controllers
 
         // GET api/<user>/5
         [HttpGet("{email}/{password}")]
-        public ActionResult<user> Get(string email, string password)
+        public async Task< ActionResult<user>> Get(string email, string password)
         {
            
-            user u = userbl.getUser(email, password);
+            user u = await userbl.getUser(email, password);
             if (u!=null)
                 return u;
             return NoContent();
@@ -45,10 +45,10 @@ namespace MyFirstWebApiSite.Controllers
 
         // POST api/<user>
         [HttpPost]
-        public user Post([FromBody] user u)
+        public async Task<user> Post([FromBody] user u)
 
         {
-            return userbl.postUser(u);
+            return await userbl.postUser(u);
         }
 
         // PUT api/<user>/5
