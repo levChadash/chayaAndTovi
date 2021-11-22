@@ -174,7 +174,7 @@ namespace MyFirstWebApiSite.Models
                     .WithMany(p => p.RisingVisits)
                     .HasForeignKey(d => d.VisitId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_RisingVisits_DonorsVisit");
+                    .HasConstraintName("FK_RisingVisits_DonorsVisit");//hjgj
             });
 
             modelBuilder.Entity<Status>(entity =>
