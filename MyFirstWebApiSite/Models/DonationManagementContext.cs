@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace MyFirstWebApiSite.Models
 {
-    public partial class DonationManagementContext : DbContext
+    public partial class DonationManagementContext : DbContext//testtttttttttttttt
     {
         public DonationManagementContext()
         {
