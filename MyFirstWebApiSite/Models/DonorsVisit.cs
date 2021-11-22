@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace MyFirstWebApiSite.Models
+namespace MyFirstWebApiSite.Models1
 {
     public partial class DonorsVisit
     {
@@ -17,7 +17,7 @@ namespace MyFirstWebApiSite.Models
         public int? DonationAmount { get; set; }
         public int? PreferredTimeId { get; set; }
         public DateTime? VisitingTime { get; set; }
-        public string Remarks { get; set; }
+        public string RemarksToVisit { get; set; }
         public int StatusId { get; set; }
         public int GroupId { get; set; }
         public TimeSpan? VisitDuration { get; set; }

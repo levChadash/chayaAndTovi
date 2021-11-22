@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace MyFirstWebApiSite.Models
+namespace MyFirstWebApiSite.Models1
 {
-    public partial class DonationManagementContext : DbContext//testtttttttttttttt
+    public partial class DonationManagementContext : DbContext
     {
         public DonationManagementContext()
         {
@@ -131,6 +131,8 @@ namespace MyFirstWebApiSite.Models
 
             modelBuilder.Entity<Raise>(entity =>
             {
+                entity.HasIndex(e => e.Id, "IX_Raises");
+
                 entity.Property(e => e.FirstName)
                     .IsRequired()
                     .HasMaxLength(50);
@@ -148,6 +150,8 @@ namespace MyFirstWebApiSite.Models
             modelBuilder.Entity<RaisesInGroup>(entity =>
             {
                 entity.ToTable("RaisesInGroup");
+
+                entity.HasIndex(e => e.Id, "IX_RaisesInGroup");
 
                 entity.HasOne(d => d.Group)
                     .WithMany(p => p.RaisesInGroups)

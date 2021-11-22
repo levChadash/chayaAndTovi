@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace MyFirstWebApiSite.Models
+namespace MyFirstWebApiSite.Models1
 {
     public partial class Raise
     {
@@ -19,6 +19,7 @@ namespace MyFirstWebApiSite.Models
         public string LastName { get; set; }
         public string IdNumber { get; set; }
         public int Year { get; set; }
+        public string Remark { get; set; }
 
         public virtual ICollection<Group> Groups { get; set; }
         public virtual ICollection<RaisesInGroup> RaisesInGroups { get; set; }

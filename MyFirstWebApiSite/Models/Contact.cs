@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace MyFirstWebApiSite.Models
+namespace MyFirstWebApiSite.Models1
 {
     public partial class Contact
     {
