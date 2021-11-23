@@ -28,7 +28,7 @@ namespace MyFirstWebApiSite.Controllers
 
         // POST api/<VisitController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] VisitController value)
         {
         }
 

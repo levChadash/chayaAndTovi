@@ -1,10 +1,11 @@
 ﻿using System;
+using Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace MyFirstWebApiSite.Models1
+namespace DL
 {
     public partial class DonationManagementContext : DbContext
     {
@@ -21,6 +22,7 @@ namespace MyFirstWebApiSite.Models1
         public virtual DbSet<Donor> Donors { get; set; }
         public virtual DbSet<DonorsVisit> DonorsVisits { get; set; }
         public virtual DbSet<Group> Groups { get; set; }
+        public virtual DbSet<Manager> Managers { get; set; }
         public virtual DbSet<Massage> Massages { get; set; }
         public virtual DbSet<Raise> Raises { get; set; }
         public virtual DbSet<RaisesInGroup> RaisesInGroups { get; set; }
@@ -117,6 +119,23 @@ namespace MyFirstWebApiSite.Models1
                     .HasForeignKey(d => d.TeamHeadId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Groups_Raises");
+            });
+
+            modelBuilder.Entity<Manager>(entity =>
+            {
+                entity.ToTable("Manager");
+
+                entity.HasIndex(e => e.Id, "IX_Manager");
+
+                entity.HasIndex(e => e.Id, "IX_Manager_1");
+
+                entity.Property(e => e.ManagerName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<Massage>(entity =>

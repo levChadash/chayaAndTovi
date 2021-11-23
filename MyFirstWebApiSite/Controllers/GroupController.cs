@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Entity;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace MyFirstWebApiSite.Controllers
 
         // POST api/<GroupController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Group value)
         {
         }
 

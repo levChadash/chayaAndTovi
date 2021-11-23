@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace MyFirstWebApiSite.Models1
+namespace Entity
 {
     public partial class Donor
     {
