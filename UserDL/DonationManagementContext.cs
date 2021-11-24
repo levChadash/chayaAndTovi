@@ -40,6 +40,15 @@ namespace DL
             }
         }
 
+        internal Task RemoveAsync(Raise raise)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Task RemoveAsync(Donor d)
+        {
+            throw new NotImplementedException();
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -60,7 +69,7 @@ namespace DL
 
                 entity.Property(e => e.FirstName).HasMaxLength(50);
 
-                entity.Property(e => e.LastNme)
+                entity.Property(e => e.LastName)
                     .IsRequired()
                     .HasMaxLength(50);
 

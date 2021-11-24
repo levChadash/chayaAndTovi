@@ -41,8 +41,8 @@ namespace DL
         }
         public async Task<bool> DeleteDonor(Donor d)
         {
-            dmc.Remove(d);
-            dmc.SaveChanges();
+            await dmc.RemoveAsync(d);
+            await dmc.SaveChangesAsync();
             return true;
 
         }

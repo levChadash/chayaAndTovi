@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DL
 {
-    class RaiseDL : IRaiseDL
+   public class RaiseDL : IRaiseDL
     {
 
         DonationManagementContext dmc;
@@ -26,9 +26,9 @@ namespace DL
             List<Raise> ld = await dmc.Raises.Where(d => d.FirstName == fn && d.LastNme == ln).ToListAsync();
             return ld;
         }
-        public async Task<Raise> GetRaise(string id)
+        public async Task<Raise> GetRaise(string idNumber)
         {
-            var raise = await dmc.Raises.SingleOrDefaultAsync(d => d.IdNumber == id);
+            var raise = await dmc.Raises.SingleOrDefaultAsync(d => d.IdNumber == idNumber);
             return raise;
         }
         public async Task<bool> PostRaise(Raise raise)
@@ -43,11 +43,11 @@ namespace DL
             await dmc.SaveChangesAsync();
             return true;
         }
-        public async Task<bool> DeleteRaise(string id)
+        public async Task<bool> DeleteRaise(string idNumber)
         {
-            var raise = GetRaise(id);
-            dmc.Remove(raise);
-            dmc.SaveChanges();
+            var raise = await GetRaise(idNumber);
+            await dmc.RemoveAsync(raise);
+            await dmc.SaveChangesAsync();
             return true;
 
         }

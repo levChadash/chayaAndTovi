@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DL
+namespace BL
 {
-   public interface IRaiseDL
+    public interface IRaiseBL
     {
-        Task<bool> DeleteRaise(string id);
+        Task<bool> DeleteRaise(string idNumber);
         Task<List<Raise>> GetRaise();
-        Task<Raise> GetRaise(string id);
+        Task<Raise> GetRaise(string idNumber);
         Task<List<Raise>> GetRaise(string fn, string ln);
-        Task<bool> PostRaise(Raise raise);
+        Task<bool> PostRaise(Raise d);
         Task<bool> PutRaise(Raise raise);
     }
 }
