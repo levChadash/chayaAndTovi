@@ -14,35 +14,52 @@ namespace MyFirstWebApiSite.Controllers
     public class GroupController : ControllerBase
     {
         // GET: api/<GroupController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+      
+        IGroupBL groupBL;
+
+        public GroupController(IGroupBL groupBL)
         {
-            return new string[] { "value1", "value2" };
+            this.groupBL = groupBL; ;
+        }
+        // GET: api/<GroupController>
+        [HttpGet]
+        public async Task<List<Group>> GetGroup()
+        {
+            return await groupBL.GetGroup();
         }
 
         // GET api/<GroupController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{fn}/{ln}")]
+        public async Task<List<Group>> GetGroup(string fn, string ln)
         {
-            return "value";
+            return await groupBL.GetGroup(fn, ln);
+        }
+        // GET api/<GroupController>/5
+        [HttpGet("{idNumber}")]
+        public async Task<Group> GetGroup(string idNumber)
+        {
+            return await groupBL.GetGroup(idNumber);
         }
 
         // POST api/<GroupController>
         [HttpPost]
-        public void Post([FromBody] Group value)
+        public async Task<bool> PostGroup([FromBody] Group d)
         {
+            return await groupBL.PostGroup(d);
         }
 
         // PUT api/<GroupController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public async Task<bool> PutGroup([FromBody] Group group)
         {
+            return await groupBL.PutGroup(group);
         }
 
         // DELETE api/<GroupController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{idNumber}")]
+        public async Task<bool> DeleteRaise(string idNumber)
         {
+            return await groupBL.DeleteRaise(idNumber);
         }
     }
 }
