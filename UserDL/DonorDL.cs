@@ -24,7 +24,7 @@ namespace DL
 
         public async Task<List<Donor>> GetDonor(string fn, string ln)
         {
-            List<Donor> ld = await dmc.Donors.Where(d => d.FirstName == fn && d.LastNme == ln).ToListAsync();
+            List<Donor> ld = await dmc.Donors.Where(d => d.FirstName == fn && d.LastName == ln).ToListAsync();
             return ld;
         }
         public async Task<bool> PostDonor(Donor d)
@@ -39,7 +39,7 @@ namespace DL
             await dmc.SaveChangesAsync();
             return true;
         }
-        public async Task<bool> DeleteDonor(Donor d)
+        public Task<bool> DeleteDonor(Donor d)
         {
             dmc.Remove(d);
             dmc.SaveChanges();
