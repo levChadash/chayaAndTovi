@@ -36,16 +36,16 @@ namespace MyFirstWebApiSite.Controllers
 
         // POST api/<DonorController>
         [HttpPost]
-        public async Task<bool> PostDonor(Donor d)
+        public async Task<bool> PostDonor([FromBody] Donor d)
         {
             return await dbl.PostDonor(d);
         }
 
         // PUT api/<DonorController>/5
-        [HttpPut("{d}")]
-        public async Task<bool> PutDonor(Donor d)
+        [HttpPut("{id}")]
+        public async Task<bool> PutDonor(int id ,[FromBody] Donor d)
         {
-            return await dbl.PutDonor(d);
+            return await dbl.PutDonor(id,d);
         }
 
         // DELETE api/<DonorController>/5

@@ -25,14 +25,14 @@ namespace BL
             return await ddl.GetDonor(fn, ln);
         }
 
-        public async Task<bool> PostDonor(Donor d)
+        public async Task<bool> PostDonor( Donor d)
         {
             return await ddl.PostDonor(d);
         }
 
-        public async Task<bool> PutDonor(Donor d)
+        public async Task<bool> PutDonor(int id, Donor d)
         {
-            return await ddl.PutDonor(d);
+            return await ddl.PutDonor(id,d);
         }
 
         public async Task<bool> DeleteDonor(Donor d)

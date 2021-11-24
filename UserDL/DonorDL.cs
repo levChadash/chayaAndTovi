@@ -32,7 +32,7 @@ namespace DL
             await dmc.Donors.AddAsync(d);
             return true;
         }
-        public async Task<bool> PutDonor(Donor d)
+        public async Task<bool> PutDonor(int id, Donor d)
         {
             var d2 = await dmc.Donors.FindAsync(d.Id);
             d2 = d;

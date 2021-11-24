@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 #nullable disable
 
@@ -23,9 +24,11 @@ namespace Entity
         public TimeSpan? VisitDuration { get; set; }
 
         public virtual Donor Donor { get; set; }
+
         public virtual Group Group { get; set; }
         public virtual Time PreferredTime { get; set; }
         public virtual Status Status { get; set; }
+        [JsonIgnore]
         public virtual ICollection<RisingVisit> RisingVisits { get; set; }
     }
 }
