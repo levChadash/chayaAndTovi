@@ -17,10 +17,10 @@ namespace MyFirstWebApiSite.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class userController : ControllerBase
+    public class ManagerController : ControllerBase
     {
         IUserBL userbl;
-        public userController(IUserBL userbl)
+        public ManagerController(IUserBL userbl)
         {
             this.userbl = userbl;
         }
@@ -33,11 +33,11 @@ namespace MyFirstWebApiSite.Controllers
         }
 
         // GET api/<user>/5
-        [HttpGet("{email}/{password}")]
-        public async Task< ActionResult<user>> Get(string email, string password)
+        [HttpGet("{ManagerName}/{password}")]
+        public async Task< ActionResult<user>> Get(string ManagerName, string password)
         {
            
-            user u = await userbl.getUser(email, password);
+            Manager m = await userbl.getUser(ManagerName, password);
             if (u!=null)
                 return u;
             return NoContent();

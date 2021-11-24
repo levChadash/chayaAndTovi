@@ -5,7 +5,7 @@ namespace DL
 {
     public interface IUserDL
     {
-        Task<user> getUser(string email, string password);
+        Task<user> getUser(string name, string password);
         Task<user> postUser(user u);
         void putUser(int id, user u);
     }
