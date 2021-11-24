@@ -1,12 +1,6 @@
 ﻿using BL;
 using Entity;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 
@@ -19,49 +13,32 @@ namespace MyFirstWebApiSite.Controllers
     [ApiController]
     public class ManagerController : ControllerBase
     {
-        IManagerBL userbl;
-        public ManagerController(IManagerBL userbl)
+        IManagerBL managerbl;
+
+        public ManagerController(IManagerBL managerbl)
         {
-            this.userbl = userbl;
-        }
-        
-        // GET: api/<user>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
+            this.managerbl = managerbl;
         }
 
         // GET api/<user>/5
-        [HttpGet("{ManagerName}/{password}")]
-        public async Task< ActionResult<user>> Get(string ManagerName, string password)
+        [HttpGet("{managerName}/{password}")]
+        public async Task<ActionResult<Manager>> Get(string managerName, string password)
         {
-           
-            Manager m = await Managerbl.getManager(ManagerName, password);
-            if (m!=null)
+
+            Manager m = await managerbl.GetManager(managerName, password);
+            if (m != null)
                 return m;
             return NoContent();
         }
 
-        //// POST api/<user>
-        //[HttpPost]
-        //public async Task<user> Post([FromBody] user u)
 
-        //{
-        //    return await userbl.postUser(u);
-        //}
+        // PUT api/<user>/5
+        [HttpPut("{ManagerName}/{password}/{NewPassword}")]
+        public void Put(string managerName, string password, string newPassword)
+        {
+            managerbl.PutManager(managerName, password, newPassword);
+        }
 
-        //// PUT api/<user>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] user u)
-        //{
-        //  userbl.putUser(id, u);
-        //}
 
-        //// DELETE api/<user>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

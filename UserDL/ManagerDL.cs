@@ -1,54 +1,29 @@
 ﻿using Entity;
-using System;
-using System.IO;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace DL
 {
     public class ManagerDL : IManagerDL
     {
-        public async Task <Manager> getManager(string ManagerName, string password)
+        DonationManagementContext dmc;
+        public async Task <Manager> GetManager(string managerName, string password)
         {
-           Manager manager=await DonationManagementContext.
-                    if (manager.password == password && manager.ManagerName == ManagerName)
+            Manager manager = await dmc.Managers.SingleOrDefaultAsync(m=>m.ManagerName== managerName&&m.password==password);
+                    if (manager!=null)
                         return manager;
           return null;
         }
-        //public async Task<user> postUser(user u)
-        //{
-        //    int numberOfUsers =  System.IO.File.ReadLines("M:/webAPI/MyFirstWebApiSite/user.txt").Count();
-        //    u.id = numberOfUsers + 1;
-        //    string userJson = JsonSerializer.Serialize(u);
-        //  await  System.IO.File.AppendAllTextAsync("M:/webAPI/MyFirstWebApiSite/user.txt", userJson + Environment.NewLine);
-        //    return u;
-        //}
-        public async void putUser(int id, user u)
+ 
+        public async void PutManager(string ManagerName, string password, string NewPassword)
         {
-
-            string textToReplace = "";
-            using (StreamReader reader = System.IO.File.OpenText("M:/webAPI/MyFirstWebApiSite/user.txt"))
+            Manager manager = await dmc.Managers.FindAsync(ManagerName);
+            if (manager != null && manager.password == password)
             {
-                string currentUser;
-                while ((currentUser =await reader.ReadLineAsync()) != null)
-                {
-
-                    user user = JsonSerializer.Deserialize<user>(currentUser);
-                    if (user.id == id)
-                        textToReplace = currentUser;
-                }
+                 manager.password = NewPassword;
+                 await dmc.SaveChangesAsync();
             }
-
-            if (textToReplace != string.Empty)
-            {
-                string text =await System.IO.File.ReadAllTextAsync("M:/webAPI/MyFirstWebApiSite/user.txt");
-                text = text.Replace(textToReplace, JsonSerializer.Serialize(u));
-               await System.IO.File.WriteAllTextAsync("M:/webAPI/MyFirstWebApiSite/user.txt", text);
-            }
-
-
-
 
 
 
