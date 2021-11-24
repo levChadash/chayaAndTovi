@@ -19,8 +19,8 @@ namespace MyFirstWebApiSite.Controllers
     [ApiController]
     public class ManagerController : ControllerBase
     {
-        IUserBL userbl;
-        public ManagerController(IUserBL userbl)
+        IManagerBL userbl;
+        public ManagerController(IManagerBL userbl)
         {
             this.userbl = userbl;
         }
@@ -37,9 +37,9 @@ namespace MyFirstWebApiSite.Controllers
         public async Task< ActionResult<user>> Get(string ManagerName, string password)
         {
            
-            Manager m = await userbl.getUser(ManagerName, password);
-            if (u!=null)
-                return u;
+            Manager m = await Managerbl.getManager(ManagerName, password);
+            if (m!=null)
+                return m;
             return NoContent();
         }
 
