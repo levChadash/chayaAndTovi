@@ -10,6 +10,7 @@ namespace Entity
     {
         public int id { get; set; }
         [EmailAddress]
+
         [Required]
         public string email { get; set; }
         public string fName { get; set; }
