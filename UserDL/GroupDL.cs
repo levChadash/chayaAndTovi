@@ -56,15 +56,14 @@ namespace DL
 
         }
 
-        public async Task<bool> DeleteGroup(Group g)
+        public async Task<bool> DeleteGroup(int IdOfHead)
         {
-<<<<<<< HEAD
-             dmc.Remove(g);
-=======
-            dmc.Remove(g);
->>>>>>> 334f2df4782b726f4a0f03bd10408da4a8c74563
+           var group= GetGroupByIdOfHead(IdOfHead);
+             dmc.Remove(group);
+
             await dmc.SaveChangesAsync();
-            return true;
+            return true; 
+           
         }
     }
 }

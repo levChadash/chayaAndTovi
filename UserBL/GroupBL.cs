@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-    public class GroupBL
+    public class GroupBL : IGroupBL
     {
         IGroupDL gdl;
         public GroupBL(IGroupDL gdl)
@@ -23,32 +23,32 @@ namespace BL
 
         public async Task<Group> GetGroupById(int id)
         {
-          return await gdl.GetGroupById(id);
+            return await gdl.GetGroupById(id);
         }
 
         public async Task<Group> GetGroupByNum(int num)
         {
-           return await gdl.GetGroupByNum(num);
+            return await gdl.GetGroupByNum(num);
         }
 
         public async Task<List<Group>> GetGroups()
         {
-           return await gdl.GetGroups();
+            return await gdl.GetGroups();
         }
         public async Task<bool> PostGroup(Group g)
         {
-           return await gdl.PostGroup(g);
+            return await gdl.PostGroup(g);
         }
         public async Task<bool> PutGroup(int id, Group g)
         {
-            return await gdl.PutGroup(id,g);
+            return await gdl.PutGroup(id, g);
 
         }
 
-        public async Task<bool> DeleteGroup(Group g)
+        public async Task<bool> DeleteGroup(int IdOfHead)
         {
-            return await gdl.DeleteGroup(g);
+            return await gdl.DeleteGroup(IdOfHead);
         }
     }
-}
+
 }
