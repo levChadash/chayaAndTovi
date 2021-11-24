@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Entity;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,14 +29,15 @@ namespace MyFirstWebApiSite.Controllers
 
         // POST api/<RaiseController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Raise raise)
         {
         }
 
         // PUT api/<RaiseController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut()]
+        public void Put( [FromBody] Raise raise)
         {
+
         }
 
         // DELETE api/<RaiseController>/5
