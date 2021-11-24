@@ -12,10 +12,10 @@ namespace BL
         {
             this.userdl = userdl;
         }
-        public async Task<user> getUser(string name, string password)
+        public async Task<Manager> getUser(string ManagerName, string password)
         {
 
-            return await userdl.getUser(name, password);
+            return await userdl.getUser(ManagerName, password);
         }
 
         public async Task<user> postUser(user u)

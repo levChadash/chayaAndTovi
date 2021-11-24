@@ -43,25 +43,25 @@ namespace MyFirstWebApiSite.Controllers
             return NoContent();
         }
 
-        // POST api/<user>
-        [HttpPost]
-        public async Task<user> Post([FromBody] user u)
+        //// POST api/<user>
+        //[HttpPost]
+        //public async Task<user> Post([FromBody] user u)
 
-        {
-            return await userbl.postUser(u);
-        }
+        //{
+        //    return await userbl.postUser(u);
+        //}
 
-        // PUT api/<user>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] user u)
-        {
-          userbl.putUser(id, u);
-        }
+        //// PUT api/<user>/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] user u)
+        //{
+        //  userbl.putUser(id, u);
+        //}
 
-        // DELETE api/<user>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //// DELETE api/<user>/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

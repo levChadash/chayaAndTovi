@@ -5,8 +5,8 @@ namespace BL
 {
     public interface IUserBL
     {
-         Task<user> getUser(string ManagerName, string password);
-         Task<user> postUser(user u);
-        void putUser(int id, user u);
+         Task<ManagerName> getUser(string ManagerName, string password);
+         Task<ManagerName> postUser(ManagerName m);
+        void putUser(int id, ManagerName m);
     }
 }
