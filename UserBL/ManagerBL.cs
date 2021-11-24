@@ -1,5 +1,4 @@
 ﻿using Entity;
-using System;
 using DL;
 using System.Threading.Tasks;
 
@@ -7,7 +6,7 @@ namespace BL
 {
     public class ManagerBL : IManagerBL
     {
-        IManagerDL userdl ;
+        IManagerDL Managerdl;
         public ManagerBL(ManagerDL Managerdl)
         {
             this.Managerdl = Managerdl;
@@ -17,14 +16,9 @@ namespace BL
 
             return await Managerdl.getManager(ManagerName, password);
         }
-
-        //public async Task<user> postUser(user u)
-        //{
-        //    return await userdl.postUser(u);
-        //}
-        public void putgetManager(string ManagerName, string password)
+        public void putManager(string ManagerName, string password, string NewPassword)
         {
-            Managerdl.putManager(ManagerName, password);
+            Managerdl.putManager(ManagerName, password, NewPassword);
         }
     }
 }
