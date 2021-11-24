@@ -1,4 +1,5 @@
-﻿using Entity;
+﻿using BL;
+using Entity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -14,36 +15,51 @@ namespace MyFirstWebApiSite.Controllers
     public class RaiseController : ControllerBase
     {
         // GET: api/<RaiseController>
+            IRaiseBL raiseBL;
+
+            public RaiseController(IRaiseBL raiseBL)
+            {
+                this.raiseBL = raiseBL; ;
+            }
+        // GET: api/<RaiseController>
         [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+            public async Task<List<Raise>> GetRaise()
+            {
+                return await raiseBL.GetRaise();
+            }
 
         // GET api/<RaiseController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{fn}/{ln}")]
+            public async Task<List<Raise>> GetRaise(string fn, string ln)
+            {
+                return await raiseBL.GetRaise(fn, ln);
+            }
+        // GET api/<RaiseController>/5
+        [HttpGet("{idNumber}")]
+        public async Task<Raise> GetRaise(string idNumber)
         {
-            return "value";
+            return await raiseBL.GetRaise(idNumber);
         }
 
-        // POST api/<RaiseController>
+        // POST api/<DonorController>
         [HttpPost]
-        public void Post([FromBody] Raise raise)
-        {
-        }
+            public async Task<bool> PostRaise([FromBody] Raise d)
+            {
+                return await raiseBL.PostRaise(d);
+            }
 
         // PUT api/<RaiseController>/5
-        [HttpPut()]
-        public void Put( [FromBody] Raise raise)
-        {
-
-        }
+        [HttpPut]
+            public async Task<bool> PutRaise( [FromBody] Raise raise)
+            {
+                return await raiseBL.PutRaise(raise);
+            }
 
         // DELETE api/<RaiseController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+        [HttpDelete("{idNumber}")]
+            public async Task<bool> DeleteRaise(string idNumber)
+            {
+                return await raiseBL.DeleteRaise(idNumber);
+            }
         }
-    }
 }
