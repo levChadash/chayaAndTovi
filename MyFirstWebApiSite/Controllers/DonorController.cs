@@ -15,39 +15,44 @@ namespace MyFirstWebApiSite.Controllers
     public class DonorController : ControllerBase
     {
         IDonorBL dbl;
+
+        public DonorController(IDonorBL dbl)
+        {
+            this.dbl = dbl; ;
+        }
         // GET: api/<DonorController>
         [HttpGet]
-        public async Task<List<Donor>> getDonors()
+        public async Task<List<Donor>> GetDonors()
         {
-            return await dbl.getDonors();
+            return await dbl.GetDonors();
         }
 
         // GET api/<DonorController>/5
         [HttpGet("{fn}/{ln}")]
-        public async Task<List<Donor>> getDonor(string fn, string ln)
+        public async Task<List<Donor>> GetDonor(string fn, string ln)
         {
-            return await dbl.getDonor(fn, ln);
+            return await dbl.GetDonor(fn, ln);
         }
 
         // POST api/<DonorController>
         [HttpPost]
-        public async Task<bool> postDonor(Donor d)
+        public async Task<bool> PostDonor(Donor d)
         {
-            return await dbl.postDonor(d);
+            return await dbl.PostDonor(d);
         }
 
         // PUT api/<DonorController>/5
         [HttpPut("{d}")]
-        public async Task<bool> putDonor(Donor d)
+        public async Task<bool> PutDonor(Donor d)
         {
-            return await dbl.putDonor(d);
+            return await dbl.PutDonor(d);
         }
 
         // DELETE api/<DonorController>/5
         [HttpDelete("{d}")]
-        public async Task<bool> deleteDonor(Donor d)
+        public async Task<bool> DeleteDonor(Donor d)
         {
-            return await dbl.deleteDonor(d);
+            return await dbl.DeleteDonor(d);
         }
     }
 }

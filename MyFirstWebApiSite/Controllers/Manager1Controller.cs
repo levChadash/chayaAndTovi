@@ -32,7 +32,7 @@ namespace MyFirstWebApiSite.Controllers
         public async Task<ActionResult<Manager>> Get(string ManagerName, string password)
         {
 
-            Manager m = await Managerbl.getManager(ManagerName, password);
+            Manager m = await Managerbl.GetManager(ManagerName, password);
             if (m != null)
                 return m;
             return NoContent();
@@ -48,7 +48,7 @@ namespace MyFirstWebApiSite.Controllers
         [HttpPut("{ManagerName}/{password}/{NewPassword}")]
         public void Put(string ManagerName, string password, string NewPassword)
         {
-            Managerbl.putManager(ManagerName, password, NewPassword);
+            Managerbl.PutManager(ManagerName, password, NewPassword);
         }
 
 

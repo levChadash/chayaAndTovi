@@ -10,8 +10,12 @@ namespace DL
 {
     public class DonorDL : IDonorDL
     {
-
+        
         DonationManagementContext dmc;
+        public DonorDL(DonationManagementContext dmc)
+        {
+            this.dmc = dmc;
+        }
         public async Task<List<Donor>> GetDonors()
         {
             List<Donor> ld = await dmc.Donors.ToListAsync();
@@ -30,7 +34,7 @@ namespace DL
         }
         public async Task<bool> PutDonor(Donor d)
         {
-            var d2 = await dmc.Donors.FindAsync(d);
+            var d2 = await dmc.Donors.FindAsync(d.Id);
             d2 = d;
             await dmc.SaveChangesAsync();
             return true;

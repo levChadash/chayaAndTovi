@@ -11,6 +11,10 @@ namespace BL
     public class DonorBL : IDonorBL
     {
         IDonorDL ddl;
+        public DonorBL(IDonorDL ddl)
+        {
+            this.ddl = ddl;
+        }
 
         public async Task<List<Donor>> GetDonors() {
            return await ddl.GetDonors();
