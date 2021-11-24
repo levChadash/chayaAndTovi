@@ -45,9 +45,9 @@ namespace DL
         }
         public async Task<bool> DeleteRaise(string idNumber)
         {
-            var raise = GetRaise(idNumber);
-            dmc.Remove(raise);
-            dmc.SaveChanges();
+            var raise = await GetRaise(idNumber);
+            await dmc.RemoveAsync(raise);
+            await dmc.SaveChangesAsync();
             return true;
 
         }

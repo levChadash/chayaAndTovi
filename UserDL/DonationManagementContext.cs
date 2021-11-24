@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -39,6 +40,16 @@ namespace DL
             }
         }
 
+        internal Task RemoveAsync(Raise raise)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Task RemoveAsync(Donor d)
+        {
+            throw new NotImplementedException();
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Hebrew_CI_AS");
@@ -58,7 +69,7 @@ namespace DL
 
                 entity.Property(e => e.FirstName).HasMaxLength(50);
 
-                entity.Property(e => e.LastNme)
+                entity.Property(e => e.LastName)
                     .IsRequired()
                     .HasMaxLength(50);
 
