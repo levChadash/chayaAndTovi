@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,6 +32,9 @@ namespace MyFirstWebApiSite
             services.AddScoped< IUserBL, UserBL>();
             services.AddScoped<IUserDL, UserDL>();
             services.AddControllers();
+            services.AddDbContext<DonationManagementContext>(options => options.UseSqlServer(
+               "Server=srv2\\pupils;Database=DonationManagement;Trusted_Connection=True;"), ServiceLifetime.Scoped);
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MyFirstWebApiSite", Version = "v1" });
