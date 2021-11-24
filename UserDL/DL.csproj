@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <Compile Remove="GroupDL.cs" />
+    <Compile Remove="IManagerDL.cs" />
+    <Compile Remove="ManagerDL.cs" />
   </ItemGroup>
 
   <ItemGroup>

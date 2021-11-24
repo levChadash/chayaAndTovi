@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 
 namespace MyFirstWebApiSite
 {
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -29,6 +30,8 @@ namespace MyFirstWebApiSite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IDonorBL, DonorBL>();
+            services.AddScoped<IDonorDL, DonorDL>();
             services.AddScoped< IManagerBL, ManagerBL>();
             services.AddScoped<IManagerDL, ManagerDL>();
             services.AddControllers();

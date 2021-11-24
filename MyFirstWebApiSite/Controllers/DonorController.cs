@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BL;
+using Entity;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,36 +14,40 @@ namespace MyFirstWebApiSite.Controllers
     [ApiController]
     public class DonorController : ControllerBase
     {
+        IDonorBL dbl;
         // GET: api/<DonorController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<List<Donor>> getDonors()
         {
-            return new string[] { "value1", "value2" };
+            return await dbl.getDonors();
         }
 
         // GET api/<DonorController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{fn}/{ln}")]
+        public async Task<List<Donor>> getDonor(string fn, string ln)
         {
-            return "value";
+            return await dbl.getDonor(fn, ln);
         }
 
         // POST api/<DonorController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<bool> postDonor(Donor d)
         {
+            return await dbl.postDonor(d);
         }
 
         // PUT api/<DonorController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut("{d}")]
+        public async Task<bool> putDonor(Donor d)
         {
+            return await dbl.putDonor(d);
         }
 
         // DELETE api/<DonorController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{d}")]
+        public async Task<bool> deleteDonor(Donor d)
         {
+            return await dbl.deleteDonor(d);
         }
     }
 }

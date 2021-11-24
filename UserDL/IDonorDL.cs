@@ -4,10 +4,12 @@ using System.Threading.Tasks;
 
 namespace DL
 {
-    interface IDonorDL
+    public interface IDonorDL
     {
-        Task<List<Donor>> getDonors();
-        Task<user> postUser(user u);
-        void putUser(int id, user u);
+        Task<List<Donor>> GetDonor(string fn, string ln);
+        Task<List<Donor>> GetDonors();
+        Task<bool> PostDonor(Donor d);
+        Task<bool> PutDonor(Donor d);
+        Task<bool> DeleteDonor(Donor d);
     }
 }

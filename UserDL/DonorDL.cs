@@ -1,58 +1,46 @@
 ﻿using Entity;
 using System;
 using System.Collections.Generic;
-using Entity
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace DL
 {
-    class DonorDL : IDonorDL
+    public class DonorDL : IDonorDL
     {
 
         DonationManagementContext dmc;
-        public async Task<List<Donor>> getDonors()
+        public async Task<List<Donor>> GetDonors()
         {
-            object p = await dmc.Donors.
-
+            List<Donor> ld = await dmc.Donors.ToListAsync();
+            return ld;
         }
-        public async Task<user> postUser(user u)
+
+        public async Task<List<Donor>> GetDonor(string fn, string ln)
         {
-            int numberOfUsers = System.IO.File.ReadLines("M:/webAPI/MyFirstWebApiSite/user.txt").Count();
-            u.id = numberOfUsers + 1;
-            string userJson = JsonSerializer.Serialize(u);
-            await System.IO.File.AppendAllTextAsync("M:/webAPI/MyFirstWebApiSite/user.txt", userJson + Environment.NewLine);
-            return u;
+            List<Donor> ld = await dmc.Donors.Where(d => d.FirstName == fn && d.LastNme == ln).ToListAsync();
+            return ld;
         }
-        public async void putUser(int id, user u)
+        public async Task<bool> PostDonor(Donor d)
         {
-
-            string textToReplace = "";
-            using (StreamReader reader = System.IO.File.OpenText("M:/webAPI/MyFirstWebApiSite/user.txt"))
-            {
-                string currentUser;
-                while ((currentUser = await reader.ReadLineAsync()) != null)
-                {
-
-                    user user = JsonSerializer.Deserialize<user>(currentUser);
-                    if (user.id == id)
-                        textToReplace = currentUser;
-                }
-            }
-
-            if (textToReplace != string.Empty)
-            {
-                string text = await System.IO.File.ReadAllTextAsync("M:/webAPI/MyFirstWebApiSite/user.txt");
-                text = text.Replace(textToReplace, JsonSerializer.Serialize(u));
-                await System.IO.File.WriteAllTextAsync("M:/webAPI/MyFirstWebApiSite/user.txt", text);
-            }
-
-
-
-
-
-
+            await dmc.Donors.AddAsync(d);
+            return true;
+        }
+        public async Task<bool> PutDonor(Donor d)
+        {
+            var d2 = await dmc.Donors.FindAsync(d);
+            d2 = d;
+            await dmc.SaveChangesAsync();
+            return true;
+        }
+        public async Task<bool> DeleteDonor(Donor d)
+        {
+            dmc.Remove(d);
+            dmc.SaveChanges();
+            return true;
 
         }
     }
+}
