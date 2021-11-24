@@ -23,7 +23,7 @@ namespace DL
         }
         public async Task<List<Raise>> GetRaise(string fn, string ln)
         {
-            List<Raise> ld = await dmc.Raises.Where(d => d.FirstName == fn && d.LastNme == ln).ToListAsync();
+            List<Raise> ld = await dmc.Raises.Where(d => d.FirstName == fn && d.LastName == ln).ToListAsync();
             return ld;
         }
         public async Task<Raise> GetRaise(string idNumber)
@@ -46,7 +46,7 @@ namespace DL
         public async Task<bool> DeleteRaise(string idNumber)
         {
             var raise = await GetRaise(idNumber);
-            await dmc.RemoveAsync(raise);
+            dmc.Remove(raise);
             await dmc.SaveChangesAsync();
             return true;
 

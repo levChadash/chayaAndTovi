@@ -58,7 +58,7 @@ namespace DL
 
         public async Task<bool> DeleteGroup(Group g)
         {
-            await dmc.RemoveAsync(g);
+            dmc.Remove(g);
             await dmc.SaveChangesAsync();
             return true;
         }
