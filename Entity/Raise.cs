@@ -24,5 +24,6 @@ namespace Entity
         public virtual ICollection<Group> Groups { get; set; }
         public virtual ICollection<RaisesInGroup> RaisesInGroups { get; set; }
         public virtual ICollection<RisingVisit> RisingVisits { get; set; }
+        public string LastNme { get; set; }
     }
 }
