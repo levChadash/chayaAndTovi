@@ -5,8 +5,8 @@ namespace DL
 {
     public interface IManagerDL
     {
-        Task<Manager> getManager(string ManagerName, string password);
+        Task<Manager> GetManager(string managerName, string password);
 
-        void putManager(string ManagerName, string password, string NewPassword);
+        void PutManager(string managerName, string password, string newPassword);
     }
 }

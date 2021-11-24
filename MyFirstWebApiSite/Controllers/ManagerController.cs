@@ -13,19 +13,19 @@ namespace MyFirstWebApiSite.Controllers
     [ApiController]
     public class ManagerController : ControllerBase
     {
-        IManagerBL Managerbl;
+        IManagerBL managerbl;
 
-        public ManagerController(IManagerBL Managerbl)
+        public ManagerController(IManagerBL managerbl)
         {
-            this.Managerbl = Managerbl;
+            this.managerbl = managerbl;
         }
 
         // GET api/<user>/5
-        [HttpGet("{ManagerName}/{password}")]
-        public async Task<ActionResult<Manager>> Get(string ManagerName, string password)
+        [HttpGet("{managerName}/{password}")]
+        public async Task<ActionResult<Manager>> Get(string managerName, string password)
         {
 
-            Manager m = await Managerbl.getManager(ManagerName, password);
+            Manager m = await managerbl.GetManager(managerName, password);
             if (m != null)
                 return m;
             return NoContent();
@@ -34,9 +34,9 @@ namespace MyFirstWebApiSite.Controllers
 
         // PUT api/<user>/5
         [HttpPut("{ManagerName}/{password}/{NewPassword}")]
-        public void Put(string ManagerName, string password, string NewPassword)
+        public void Put(string managerName, string password, string newPassword)
         {
-            Managerbl.putManager(ManagerName, password, NewPassword);
+            managerbl.PutManager(managerName, password, newPassword);
         }
 
 

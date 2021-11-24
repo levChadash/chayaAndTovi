@@ -5,7 +5,7 @@ namespace BL
 {
     public interface IManagerBL
     {
-         Task<Manager> getManager(string ManagerName, string password);
-         void putManager(string ManagerName, string password, string NewPassword);
+         Task<Manager> GetManager(string managerName, string password);
+         void PutManager(string managerName, string password, string newPassword);
     }
 }

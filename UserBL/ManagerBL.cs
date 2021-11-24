@@ -6,19 +6,19 @@ namespace BL
 {
     public class ManagerBL : IManagerBL
     {
-        IManagerDL Managerdl;
-        public ManagerBL(ManagerDL Managerdl)
+        IManagerDL managerdl;
+        public ManagerBL(IManagerDL managerdl)
         {
-            this.Managerdl = Managerdl;
+            this.managerdl = managerdl;
         }
-        public async Task<Manager> getManager(string ManagerName, string password)
+        public async Task<Manager> GetManager(string managerName, string password)
         {
 
-            return await Managerdl.getManager(ManagerName, password);
+            return await managerdl.GetManager(managerName, password);
         }
-        public void putManager(string ManagerName, string password, string NewPassword)
+        public void PutManager(string managerName, string password, string newPassword)
         {
-            Managerdl.putManager(ManagerName, password, NewPassword);
+            managerdl.PutManager(managerName, password, newPassword);
         }
     }
 }
