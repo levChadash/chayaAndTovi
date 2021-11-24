@@ -27,6 +27,5 @@ namespace Entity
         public virtual ICollection<RaisesInGroup> RaisesInGroups { get; set; }
         [JsonIgnore]
         public virtual ICollection<RisingVisit> RisingVisits { get; set; }
-        public string LastNme { get; set; }
     }
 }

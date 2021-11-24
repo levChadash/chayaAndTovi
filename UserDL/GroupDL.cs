@@ -1,5 +1,5 @@
 ﻿using Entity;
-
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 
@@ -9,65 +9,58 @@ using System.Threading.Tasks;
 
 namespace DL
 {
-    class GroupDL
+    public class GroupDL :IGroupDL
     {
+        DonationManagementContext dmc;
 
-        public async Task<Group> getGroupById(int id)
+        public GroupDL(DonationManagementContext dmc)
         {
-            using (StreamReader reader = System.IO.File.OpenText("M:/webAPI/MyFirstWebApiSite/user.txt"))
-            {
-                string currentUser;
-                while ((currentUser = await reader.ReadLineAsync()) != null)
-                {
+            this.dmc = dmc;
+        }
 
-                    user user = JsonSerializer.Deserialize<user>(currentUser);
-                    if (user.email == email && user.password == password)
-                        return user;
-                }
-            }
-            return null;
+        public async Task<Group> GetGroupByIdOfHead(int id)
+        {
+            Group g = await dmc.Groups.Where(g => g.TeamHeadId == id).FirstOrDefaultAsync();
+            return g;
+        }
+
+        public async Task<Group> GetGroupById(int id)
+        {
+            Group g = await dmc.Groups.FindAsync(id);
+            return g;
+        }
+
+        public async Task<Group> GetGroupByNum(int num)
+        {
+            Group g = await dmc.Groups.Where(g => g.GroupNum == num).FirstOrDefaultAsync();
+            return g;
         }
 
 
-        public async Task<List<Group>> getGroups()
+        public async Task<List<Group>> GetGroups()
         {
-            return 
+            List<Group> lg = await dmc.Groups.ToListAsync();
+            return lg;
         }
-        public async Task<Group> postGroup(Group g)
+        public async Task<bool> PostGroup(Group g)
         {
-            int numberOfUsers = System.IO.File.ReadLines("M:/webAPI/MyFirstWebApiSite/user.txt").Count();
-            u.id = numberOfUsers + 1;
-            string userJson = JsonSerializer.Serialize(u);
-            await System.IO.File.AppendAllTextAsync("M:/webAPI/MyFirstWebApiSite/user.txt", userJson + Environment.NewLine);
-            return u;
+            await dmc.Groups.AddAsync(g);
+            return true;
         }
-        public async void putGroup(Group g)
+        public async Task<bool> PutGroup(int id, Group g)
         {
+            var g2 = await dmc.Groups.FindAsync(id);
+            g2 = g;
+            await dmc.SaveChangesAsync();
+            return true;
 
-            string textToReplace = "";
-            using (StreamReader reader = System.IO.File.OpenText("M:/webAPI/MyFirstWebApiSite/user.txt"))
-            {
-                string currentUser;
-                while ((currentUser = await reader.ReadLineAsync()) != null)
-                {
+        }
 
-                    user user = JsonSerializer.Deserialize<user>(currentUser);
-                    if (user.id == id)
-                        textToReplace = currentUser;
-                }
-            }
-
-            if (textToReplace != string.Empty)
-            {
-                string text = await System.IO.File.ReadAllTextAsync("M:/webAPI/MyFirstWebApiSite/user.txt");
-                text = text.Replace(textToReplace, JsonSerializer.Serialize(u));
-                await System.IO.File.WriteAllTextAsync("M:/webAPI/MyFirstWebApiSite/user.txt", text);
-            }
-
-
-
-
-
-
+        public async Task<bool> DeleteGroup(Group g)
+        {
+            await dmc.RemoveAsync(g);
+            await dmc.SaveChangesAsync();
+            return true;
         }
     }
+}

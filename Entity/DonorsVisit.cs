@@ -22,11 +22,13 @@ namespace Entity
         public int StatusId { get; set; }
         public int GroupId { get; set; }
         public TimeSpan? VisitDuration { get; set; }
-
+        [JsonIgnore]
         public virtual Donor Donor { get; set; }
-
+        [JsonIgnore]
         public virtual Group Group { get; set; }
+        [JsonIgnore]
         public virtual Time PreferredTime { get; set; }
+        [JsonIgnore]
         public virtual Status Status { get; set; }
         [JsonIgnore]
         public virtual ICollection<RisingVisit> RisingVisits { get; set; }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -38,6 +39,7 @@ namespace DL
                 optionsBuilder.UseSqlServer("Server=srv2\\pupils;Database=DonationManagement;Trusted_Connection=True;");
             }
         }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
