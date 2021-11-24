@@ -40,15 +40,7 @@ namespace DL
             }
         }
 
-        internal Task RemoveAsync(Raise raise)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal Task RemoveAsync(Donor d)
-        {
-            throw new NotImplementedException();
-        }
+    
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
