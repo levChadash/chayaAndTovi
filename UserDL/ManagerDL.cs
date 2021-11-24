@@ -8,20 +8,21 @@ namespace DL
     public class ManagerDL : IManagerDL
     {
         DonationManagementContext dmc;
+        public ManagerDL(DonationManagementContext dmc)
+        {
+            this.dmc = dmc;
+        }
         public async Task <Manager> GetManager(string managerName, string password)
         {
-            Manager manager = await dmc.Managers.SingleOrDefaultAsync(m=>m.ManagerName== managerName&&m.password==password);
-                    if (manager!=null)
-                        return manager;
-          return null;
+            return await dmc.Managers.SingleOrDefaultAsync(m=>m.ManagerName== managerName&&m.Password==password);
+          
         }
  
-        public async void PutManager(string ManagerName, string password, string NewPassword)
+        public async void PutManager(string managerName, string password, string newPassword)
         {
-            Manager manager = await dmc.Managers.FindAsync(ManagerName);
-            if (manager != null && manager.password == password)
-            {
-                 manager.password = NewPassword;
+            var manager = await dmc.Managers.SingleOrDefaultAsync(m => m.ManagerName == managerName && m.Password == password); 
+            if (manager != null )
+            {    manager.Password = newPassword;
                  await dmc.SaveChangesAsync();
             }
 

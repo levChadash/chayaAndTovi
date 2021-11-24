@@ -19,35 +19,35 @@ namespace MyFirstWebApiSite.Controllers
         [HttpGet]
         public async Task<List<Donor>> getDonors()
         {
-            return await dbl.getDonors();
+            return await dbl.GetDonors();
         }
 
         // GET api/<DonorController>/5
         [HttpGet("{fn}/{ln}")]
         public async Task<List<Donor>> getDonor(string fn, string ln)
         {
-            return await dbl.getDonor(fn, ln);
+            return await dbl.GetDonor(fn, ln);
         }
 
         // POST api/<DonorController>
         [HttpPost]
         public async Task<bool> postDonor(Donor d)
         {
-            return await dbl.postDonor(d);
+            return await dbl.PostDonor(d);
         }
 
         // PUT api/<DonorController>/5
         [HttpPut("{d}")]
         public async Task<bool> putDonor(Donor d)
         {
-            return await dbl.putDonor(d);
+            return await dbl.PutDonor(d);
         }
 
         // DELETE api/<DonorController>/5
         [HttpDelete("{d}")]
         public async Task<bool> deleteDonor(Donor d)
         {
-            return await dbl.deleteDonor(d);
+            return await dbl.DeleteDonor(d);
         }
     }
 }
