@@ -33,7 +33,7 @@ namespace MyFirstWebApiSite.Controllers
 
 
         // PUT api/<user>/5
-        [HttpPut("{ManagerName}/{password}/{NewPassword}")]
+        [HttpPut("{managerName}/{password}/{newPassword}")]
         public void Put(string managerName, string password, string newPassword)
         {
             managerbl.PutManager(managerName, password, newPassword);
