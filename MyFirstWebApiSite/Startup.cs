@@ -29,8 +29,8 @@ namespace MyFirstWebApiSite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped< IUserBL, UserBL>();
-            services.AddScoped<IUserDL, UserDL>();
+            services.AddScoped< IManagerBL, ManagerBL>();
+            services.AddScoped<IManagerDL, ManagerDL>();
             services.AddControllers();
             services.AddDbContext<DonationManagementContext>(options => options.UseSqlServer(
                "Server=srv2\\pupils;Database=DonationManagement;Trusted_Connection=True;"), ServiceLifetime.Scoped);
