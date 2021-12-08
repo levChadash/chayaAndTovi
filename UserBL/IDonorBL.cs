@@ -9,6 +9,6 @@ namespace BL
         Task<System.Collections.Generic.List<Donor>> GetDonors();
         Task<bool> PostDonor(Donor d);
         Task<bool> PutDonor(int id, Donor d);
-        Task<bool> DeleteDonor(Donor d);
+        Task<bool> DeleteDonor(int id);
     }
 }

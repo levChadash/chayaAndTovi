@@ -49,10 +49,10 @@ namespace MyFirstWebApiSite.Controllers
         }
 
         // DELETE api/<DonorController>/5
-        [HttpDelete("{d}")]
-        public async Task<bool> DeleteDonor(Donor d)
+        [HttpDelete("{id}")]
+        public async Task<bool> DeleteDonor(int id)
         {
-            return await dbl.DeleteDonor(d);
+            return await dbl.DeleteDonor(id);
         }
     }
 }

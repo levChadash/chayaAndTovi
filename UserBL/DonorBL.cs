@@ -35,9 +35,9 @@ namespace BL
             return await ddl.PutDonor(id,d);
         }
 
-        public async Task<bool> DeleteDonor(Donor d)
+        public async Task<bool> DeleteDonor(int id)
         {
-             return await ddl.DeleteDonor(d);
+             return await ddl.DeleteDonor(id);
         }
     }
 }

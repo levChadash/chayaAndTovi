@@ -39,12 +39,12 @@ namespace DL
             await dmc.SaveChangesAsync();
             return true;
         }
-        public async Task<bool> DeleteDonor(Donor d)
+        public async Task<bool> DeleteDonor(int id)
         {
+            var d = dmc.Donors.FindAsync(id);
             dmc.Remove(d);
             await dmc.SaveChangesAsync();
             return true;
-
         }
     }
 }
