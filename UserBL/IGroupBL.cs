@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DL
+namespace BL
 {
-    public interface IGroupDL
+    public interface IGroupBL
     {
         Task<bool> DeleteGroup(int id);
         Task<Group> GetGroupById(int id);

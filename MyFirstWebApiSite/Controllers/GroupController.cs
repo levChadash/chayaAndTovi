@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using BL;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MyFirstWebApiSite.Controllers
@@ -14,35 +14,57 @@ namespace MyFirstWebApiSite.Controllers
     public class GroupController : ControllerBase
     {
         // GET: api/<GroupController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+      
+        IGroupBL groupBL;
+
+        public GroupController(IGroupBL groupBL)
         {
-            return new string[] { "value1", "value2" };
+            this.groupBL = groupBL; ;
+        }
+        // GET: api/<GroupController>
+        [HttpGet]
+        public async Task<List<Group>> GetGroup()
+        {
+            return await groupBL.GetGroups();
         }
 
         // GET api/<GroupController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{groupNum}")]
+        public async Task<Group> GetGroupByNum(int groupNum)
         {
-            return "value";
+            return await groupBL.GetGroupByNum(groupNum);
         }
-
+        // GET api/<GroupController>/5
+        [HttpGet("{id}")]
+        public async Task<Group> GetGroupById(int id)
+        {
+            return await groupBL.GetGroupById(id);
+        }
+        [HttpGet("{IdOfHead}")]
+        public async Task<Group> GetGroupByIdOfHead(int id)
+        {
+            return await groupBL.GetGroupByIdOfHead(id);
+        }
+        
         // POST api/<GroupController>
         [HttpPost]
-        public void Post([FromBody] Group value)
+        public async Task<bool> PostGroup([FromBody] Group d)
         {
+            return await groupBL.PostGroup(d);
         }
 
         // PUT api/<GroupController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<bool> PutGroup(int id,[FromBody] Group group)
         {
+            return await groupBL.PutGroup(id, group);
         }
 
         // DELETE api/<GroupController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{IdOfHead}")]
+        public async Task<bool> DeleteGroup(int IdOfHead)
         {
+            return await groupBL.DeleteGroup(IdOfHead);
         }
     }
 }
