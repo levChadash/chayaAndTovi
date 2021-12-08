@@ -28,24 +28,28 @@ namespace MyFirstWebApiSite.Controllers
             return await groupBL.GetGroups();
         }
 
-        // GET api/<GroupController>/5
-        [HttpGet("{groupNum}")]
+    
+        [Route("[action]/{GroupNum}")]
+
         public async Task<Group> GetGroupByNum(int groupNum)
         {
             return await groupBL.GetGroupByNum(groupNum);
         }
-        // GET api/<GroupController>/5
+        //GET api/<GroupController>/5
+
         [HttpGet("{id}")]
         public async Task<Group> GetGroupById(int id)
         {
             return await groupBL.GetGroupById(id);
         }
-        [HttpGet("{IdOfHead}")]
+
+        [Route("[action]/{IdOfHead}")]
+
         public async Task<Group> GetGroupByIdOfHead(int id)
         {
             return await groupBL.GetGroupByIdOfHead(id);
         }
-        
+
         // POST api/<GroupController>
         [HttpPost]
         public async Task<bool> PostGroup([FromBody] Group d)
