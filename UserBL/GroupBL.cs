@@ -47,7 +47,7 @@ namespace BL
 
         public async Task<bool> DeleteGroup(int IdOfHead)
         {
-            return await gdl.DeleteGroup(g);
+            return await gdl.DeleteGroup(IdOfHead);
         }
     }
 }

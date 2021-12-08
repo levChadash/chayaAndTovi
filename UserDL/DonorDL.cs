@@ -30,6 +30,7 @@ namespace DL
         public async Task<bool> PostDonor(Donor d)
         {
             await dmc.Donors.AddAsync(d);
+            await dmc.SaveChangesAsync();
             return true;
         }
         public async Task<bool> PutDonor(int id, Donor d)

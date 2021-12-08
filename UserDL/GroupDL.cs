@@ -45,12 +45,15 @@ namespace DL
         public async Task<bool> PostGroup(Group g)
         {
             await dmc.Groups.AddAsync(g);
+            await dmc.SaveChangesAsync();
             return true;
         }
         public async Task<bool> PutGroup(int id, Group g)
         {
             var g2 = await dmc.Groups.FindAsync(id);
-            g2 = g;
+            if (g2 == null)
+                return false;
+            dmc.Entry(g2).CurrentValues.SetValues(g);
             await dmc.SaveChangesAsync();
             return true;
 
@@ -58,9 +61,11 @@ namespace DL
 
         public async Task<bool> DeleteGroup(int IdOfHead)
         {
-           var group= GetGroupByIdOfHead(IdOfHead);
-             dmc.Remove(group);
-
+           var group= await GetGroupByIdOfHead(IdOfHead);
+            if (group == null)
+                return false;
+           
+            dmc.Groups.Remove(group);
             await dmc.SaveChangesAsync();
             return true; 
            

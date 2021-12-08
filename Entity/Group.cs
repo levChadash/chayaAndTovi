@@ -16,11 +16,14 @@ namespace Entity
         }
 
         public int Id { get; set; }
+
         public int TeamHeadId { get; set; }
         public int Year { get; set; }
         public int GroupNum { get; set; }
         public string Password { get; set; }
         public bool WithCar { get; set; }
+
+        [JsonIgnore]
         public int? PreferredTimeId { get; set; }
         [JsonIgnore]
         public virtual Time PreferredTime { get; set; }

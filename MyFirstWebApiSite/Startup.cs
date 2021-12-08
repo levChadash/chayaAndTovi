@@ -30,6 +30,8 @@ namespace MyFirstWebApiSite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IGroupBL, GroupBL>();
+            services.AddScoped<IGroupDL, GroupDL>();
             services.AddScoped<IRaiseBL, RaiseBL>();
             services.AddScoped<IRaiseDL, RaiseDL>();
             services.AddScoped<IDonorBL, DonorBL>();

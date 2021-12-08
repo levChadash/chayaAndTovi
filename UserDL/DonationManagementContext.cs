@@ -40,7 +40,10 @@ namespace DL
             }
         }
 
-      
+        internal void RemoveAsync(Group group)
+        {
+            throw new NotImplementedException();
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

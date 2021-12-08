@@ -34,6 +34,7 @@ namespace DL
         public async Task<bool> PostRaise(Raise raise)
         {
             await dmc.Raises.AddAsync(raise);
+            await dmc.SaveChangesAsync();
             return true;
         }
         public async Task<bool> PutRaise(Raise raise)
