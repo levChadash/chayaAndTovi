@@ -21,6 +21,7 @@ namespace Entity
         public string RemarksToVisit { get; set; }
         public int StatusId { get; set; }
         public int GroupId { get; set; }
+        public int year { get; set; }
         public TimeSpan? VisitDuration { get; set; }
         [JsonIgnore]
         public virtual Donor Donor { get; set; }

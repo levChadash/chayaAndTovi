@@ -1,9 +1,10 @@
 ﻿using BL;
 using Entity;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-
-
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,32 +14,49 @@ namespace MyFirstWebApiSite.Controllers
     [ApiController]
     public class ManagerController : ControllerBase
     {
-        IManagerBL managerbl;
+        IManagerBL Managerbl;
 
-        public ManagerController(IManagerBL managerbl)
+        public ManagerController(IManagerBL Managerbl)
         {
-            this.managerbl = managerbl;
+            this.Managerbl = Managerbl;
+        }
+        // GET: api/<Manager1Controller>
+        [HttpGet]
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "value1", "value2" };
         }
 
-        // GET api/<user>/5
-        [HttpGet("{managerName}/{password}")]
-        public async Task<ActionResult<Manager>> Get(string managerName, string password)
+        // GET api/<Manager1Controller>/5
+        [HttpGet("{ManagerName}/{password}")]
+        public async Task<ActionResult<Manager>> Get(string ManagerName, string password)
         {
 
-            Manager m = await managerbl.GetManager(managerName, password);
+            Manager m = await Managerbl.GetManager(ManagerName, password);
             if (m != null)
                 return m;
             return NoContent();
         }
 
-
-        // PUT api/<user>/5
-        [HttpPut("{managerName}/{password}/{newPassword}")]
-        public void Put(string managerName, string password, string newPassword)
+        // POST api/<Manager1Controller>
+        [HttpPost]
+        public void Post([FromBody] string value)
         {
-            managerbl.PutManager(managerName, password, newPassword);
+        }
+
+        // PUT api/<Manager1Controller>/5
+        [HttpPut("{ManagerName}/{password}/{NewPassword}")]
+        public void Put(string ManagerName, string password, string NewPassword)
+        {
+            Managerbl.PutManager(ManagerName, password, NewPassword);
         }
 
 
+
+        // DELETE api/<Manager1Controller>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+        }
     }
 }
