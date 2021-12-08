@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BL;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,45 +14,55 @@ namespace MyFirstWebApiSite.Controllers
     [ApiController]
     public class MassageController : ControllerBase
     {
-        IMassageBL MassageBL;
+        IMassageBL massageBL;
 
-        public GroupController(IGroupBL groupBL)
+        public MassageController(IMassageBL massageBL)
         {
-            this.groupBL = groupBL; ;
+            this.massageBL = massageBL; ;
         }
         // GET: api/<MassageController>
         [HttpGet]
         public async Task<List<Massage>> GetAllMassages()
         {
-            return async GetAllMassages();
+            return await massageBL.GetAllMassages();
         }
 
         // GET api/<MassageController>/5
+        //[Route("[action]/{groupId}")]
         [HttpGet("{groupId}")]
         public async Task<List<Massage>> GetMassagesByGroupId(int groupId )
         {
-            return async GetMassagesByGroupId(groupId);
+            return await massageBL.GetMassagesByGroupId(groupId);
         }
+        //[HttpGet("{id}")]
+        //public async Task<Massage> GetMassagesById(int id)
+        //{
+        //    return await massageBL.GetMassagesById(id);
+        //}
 
         // POST api/<MassageController>
         [HttpPost]
-        public async Task<int> Post([FromBody] string value)
+        public async Task<int> Post([FromBody] Massage massage)
         {
-            return async Post(value);
+            return await massageBL.Post(massage);
         }
 
-
+        [HttpPost("{text}")]
+        public async Task<int> PostText(string text)
+        {
+            return await massageBL.PostText(text);
+        }
 
         // DELETE api/<MassageController>/5
         [HttpDelete]
         public async Task<bool> Delete()
         {
-            return async Delete();
+            return await massageBL.Delete();
         }
         [HttpDelete("{id}")]
         public async Task<bool> DeleteById(int id)
         {
-            return async DeleteById(id);
+            return await massageBL.DeleteById(id);
         }
     }
 }

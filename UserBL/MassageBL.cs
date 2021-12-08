@@ -4,27 +4,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DL;
 
 namespace BL
 {
-    class MassageBL : IMassageBL
+     public class MassageBL : IMassageBL
     {
         IMassageDL mdl;
-        public MassageBL(IMassageBL mdl)
+        public MassageBL(IMassageDL mdl)
         {
             this.mdl = mdl;
         }
-        public async Task<List<Massage>> GetGroups()
+        public async Task<List<Massage>> GetAllMassages()
         {
-            return await mdl.GetGroups();
+            return await mdl.GetAllMassages();
         }
-        public async Task<List<Massage>> GetMassagesByGroupId(int groupId)
+        public async Task<List<Massage>> GetMassagesByGroupId(int groupId )
         {
-            return await mdl.GetMassagesByGroupId();
+            return await mdl.GetMassagesByGroupId(groupId);
         }
-        public async Task<int> Post( int id)
+        public async Task<Massage> GetMassagesById(int id)
         {
-            return await mdl.Post(id);
+            return await mdl.GetMassagesById(id);
+        }
+        public async Task<int> Post(Massage massage)
+        {
+            return await mdl.Post(massage);
+        }
+        public async Task<int> PostText(string text)
+        {
+            return await mdl.PostText(text);
         }
         public async Task<bool> Delete()
         {
@@ -32,7 +41,7 @@ namespace BL
         }
         public async Task<bool> DeleteById(int id)
         {
-            return await mdl.DeleteById();
+            return await mdl.DeleteById(id);
         }
     }
 }

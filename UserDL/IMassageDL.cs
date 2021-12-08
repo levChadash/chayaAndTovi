@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BL
+namespace DL
 {
-    public interface IMassageBL
+  public  interface IMassageDL
     {
         Task<bool> Delete();
         Task<bool> DeleteById(int id);
