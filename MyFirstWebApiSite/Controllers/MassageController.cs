@@ -1,5 +1,4 @@
-﻿using Entity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,45 +12,36 @@ namespace MyFirstWebApiSite.Controllers
     [ApiController]
     public class MassageController : ControllerBase
     {
-        IMassageBL MassageBL;
-
-        public GroupController(IGroupBL groupBL)
-        {
-            this.groupBL = groupBL; ;
-        }
         // GET: api/<MassageController>
         [HttpGet]
-        public async Task<List<Massage>> GetAllMassages()
+        public IEnumerable<string> Get()
         {
-            return async GetAllMassages();
+            return new string[] { "value1", "value2" };
         }
 
         // GET api/<MassageController>/5
-        [HttpGet("{groupId}")]
-        public async Task<List<Massage>> GetMassagesByGroupId(int groupId )
+        [HttpGet("{id}")]
+        public string Get(int id)
         {
-            return async GetMassagesByGroupId(groupId);
+            return "value";
         }
 
         // POST api/<MassageController>
         [HttpPost]
-        public async Task<int> Post([FromBody] string value)
+        public void Post([FromBody] string value)
         {
-            return async Post(value);
         }
 
-
+        // PUT api/<MassageController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
+        {
+        }
 
         // DELETE api/<MassageController>/5
-        [HttpDelete]
-        public async Task<bool> Delete()
-        {
-            return async Delete();
-        }
         [HttpDelete("{id}")]
-        public async Task<bool> DeleteById(int id)
+        public void Delete(int id)
         {
-            return async DeleteById(id);
         }
     }
 }

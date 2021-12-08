@@ -30,6 +30,10 @@ namespace BL
         {
             return await gdl.GetGroupByNum(num);
         }
+        public async Task<List<Raise>> GetListOfRaisesInGroup(int id)
+        {
+            return await gdl.GetListOfRaisesInGroup(id);
+        }
 
         public async Task<List<Group>> GetGroups()
         {

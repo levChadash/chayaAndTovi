@@ -13,5 +13,6 @@ namespace DL
         Task<List<Group>> GetGroups();
         Task<bool> PostGroup(Group g);
         Task<bool> PutGroup(int id, Group g);
+        Task<List<Raise>> GetListOfRaisesInGroup(int id);
     }
 }

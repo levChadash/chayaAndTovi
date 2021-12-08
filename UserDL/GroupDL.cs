@@ -24,6 +24,17 @@ namespace DL
             return g;
         }
 
+        public async Task<List<Raise>> GetListOfRaisesInGroup(int id)
+        {
+            List<RaisesInGroup> listIdOfRaises = await dmc.RaisesInGroups.Where(g => g.GroupId== id).ToListAsync();
+            List<Raise> listRaises=new List<Raise>();
+            listIdOfRaises.ForEach(r =>
+            {
+                listRaises.Add(dmc.Raises.Find(r.RaiseId));
+            });
+            return listRaises;
+        }
+
         public async Task<Group> GetGroupById(int id)
         {
             var g = await dmc.Groups.Where(g => g.Id == id).FirstOrDefaultAsync();

@@ -43,6 +43,12 @@ namespace MyFirstWebApiSite.Controllers
             return await groupBL.GetGroupById(id);
         }
 
+        [HttpGet("{id}")]
+        public async Task<List<Raise>> GetListOfRaisesInGroup(int id)
+        {
+            return await groupBL.GetListOfRaisesInGroup(id);
+        }
+
         //[Route("[action]/{IdOfHead}")]
         [HttpGet("{IdOfHead}")]
 
