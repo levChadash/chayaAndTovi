@@ -40,6 +40,12 @@ namespace MyFirstWebApiSite.Controllers
         {
             return await raiseBL.GetRaise(idNumber);
         }
+        [HttpGet("{id}")]
+        public async Task<Raise> GetRaiseById(int id)
+        {
+            return await raiseBL.GetRaiseById(id);
+        }
+
 
         // POST api/<DonorController>
         [HttpPost]
@@ -56,10 +62,10 @@ namespace MyFirstWebApiSite.Controllers
             }
 
         // DELETE api/<RaiseController>/5
-        [HttpDelete("{idNumber}")]
-            public async Task<bool> DeleteRaise(string idNumber)
+        [HttpDelete("{id}")]
+            public async Task<bool> DeleteRaise(int id)
             {
-                return await raiseBL.DeleteRaise(idNumber);
+                return await raiseBL.DeleteRaise(id);
             }
         }
 }
