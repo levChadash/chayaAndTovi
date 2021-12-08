@@ -25,6 +25,11 @@ namespace BL
         {
             return await raiseDL.GetRaise(fn, ln);
         }
+
+        public async Task<Raise> GetRaiseById(int id)
+        {
+            return await raiseDL.GetRaiseById(id);
+        }
         public async Task<Raise> GetRaise(string idNumber)
         {
             return await raiseDL.GetRaise(idNumber);
@@ -39,9 +44,9 @@ namespace BL
             return await raiseDL.PutRaise(raise);
         }
 
-        public async Task<bool> DeleteRaise(string idNumber)
+        public async Task<bool> DeleteRaise(int id)
         {
-            return await raiseDL.DeleteRaise(idNumber);
+            return await raiseDL.DeleteRaise(id);
         }
     }
 }

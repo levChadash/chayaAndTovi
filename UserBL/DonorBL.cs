@@ -20,6 +20,11 @@ namespace BL
            return await ddl.GetDonors();
         }
 
+        public async Task<Donor> GetDonorById(int id)
+        {
+            return await ddl.GetDonorById(id);
+        }
+
         public async Task<List<Donor>> GetDonor(string fn, string ln)
         {
             return await ddl.GetDonor(fn, ln);

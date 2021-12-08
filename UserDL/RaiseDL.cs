@@ -26,6 +26,12 @@ namespace DL
             List<Raise> ld = await dmc.Raises.Where(d => d.FirstName == fn && d.LastName == ln).ToListAsync();
             return ld;
         }
+
+        public async Task<Raise> GetRaiseById(int id)
+        {
+            Raise d = await dmc.Raises.FindAsync(id);
+            return d;
+        }
         public async Task<Raise> GetRaise(string idNumber)
         {
             var raise = await dmc.Raises.SingleOrDefaultAsync(d => d.IdNumber == idNumber);
@@ -39,18 +45,21 @@ namespace DL
         }
         public async Task<bool> PutRaise(Raise raise)
         {
-            var d2 = await dmc.Raises.FindAsync(raise.IdNumber);
-            d2 = raise;
+            var r2 = await dmc.Raises.FindAsync(raise.Id);
+            if (r2 == null)
+                return false;
+            dmc.Entry(r2).CurrentValues.SetValues(raise);
             await dmc.SaveChangesAsync();
             return true;
         }
-        public async Task<bool> DeleteRaise(string idNumber)
+        public async Task<bool> DeleteRaise(int id)
         {
-            var raise = await GetRaise(idNumber);
+            var raise = await GetRaiseById(id);
+            if (raise == null)
+                return false;
             dmc.Remove(raise);
             await dmc.SaveChangesAsync();
             return true;
-
         }
     }
 }

@@ -7,6 +7,7 @@ namespace DL
     public interface IDonorDL
     {
         Task<List<Donor>> GetDonor(string fn, string ln);
+        Task<Donor> GetDonorById(int id);
         Task<List<Donor>> GetDonors();
         Task<bool> PostDonor(Donor d);
         Task<bool> PutDonor(int id, Donor d);

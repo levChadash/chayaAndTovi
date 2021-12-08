@@ -34,6 +34,12 @@ namespace MyFirstWebApiSite.Controllers
             return await dbl.GetDonor(fn, ln);
         }
 
+        [HttpGet("{id}")]
+        public async Task<Donor> GetDonorById(int id)
+        {
+            return await dbl.GetDonorById(id);
+        }
+
         // POST api/<DonorController>
         [HttpPost]
         public async Task<bool> PostDonor([FromBody] Donor d)
