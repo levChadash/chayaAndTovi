@@ -28,8 +28,8 @@ namespace MyFirstWebApiSite.Controllers
             return await groupBL.GetGroups();
         }
 
-    
-        [Route("[action]/{GroupNum}")]
+        [HttpGet("{groupNum}")]
+        //[Route("[action]/{GroupNum}")]
 
         public async Task<Group> GetGroupByNum(int groupNum)
         {
@@ -43,7 +43,8 @@ namespace MyFirstWebApiSite.Controllers
             return await groupBL.GetGroupById(id);
         }
 
-        [Route("[action]/{IdOfHead}")]
+        //[Route("[action]/{IdOfHead}")]
+        [HttpGet("{IdOfHead}")]
 
         public async Task<Group> GetGroupByIdOfHead(int id)
         {

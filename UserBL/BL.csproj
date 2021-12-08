@@ -14,13 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="DonorBL.cs" />
-    <Compile Remove="IDonorBL.cs" />
-    <Compile Remove="IRaiseBL.cs" />
-    <Compile Remove="RaiseBL.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Entity\Entity.csproj" />
     <ProjectReference Include="..\UserDL\DL.csproj" />
   </ItemGroup>

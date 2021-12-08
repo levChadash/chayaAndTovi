@@ -32,10 +32,10 @@ namespace MyFirstWebApiSite
         {
             services.AddScoped<IGroupBL, GroupBL>();
             services.AddScoped<IGroupDL, GroupDL>();
-            //services.AddScoped<IRaiseBL, RaiseBL>();
-            //services.AddScoped<IRaiseDL, RaiseDL>();
-            //services.AddScoped<IDonorBL, DonorBL>();
-            //services.AddScoped<IDonorDL, DonorDL>();
+            services.AddScoped<IRaiseBL, RaiseBL>();
+            services.AddScoped<IRaiseDL, RaiseDL>();
+            services.AddScoped<IDonorBL, DonorBL>();
+            services.AddScoped<IDonorDL, DonorDL>();
             services.AddScoped< IManagerBL, ManagerBL>();
             services.AddScoped<IManagerDL, ManagerDL>();
             services.AddControllers();

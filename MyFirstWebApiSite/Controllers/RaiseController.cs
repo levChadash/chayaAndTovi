@@ -34,24 +34,12 @@ namespace MyFirstWebApiSite.Controllers
             {
                 return await raiseBL.GetRaise(fn, ln);
             }
-
-        [HttpGet("{id}")]
-        public async Task<Raise> GetRaiseById(int id)
-        {
-            return await raiseBL.GetRaiseById(id);
-        }
         // GET api/<RaiseController>/5
         [HttpGet("{idNumber}")]
         public async Task<Raise> GetRaise(string idNumber)
         {
             return await raiseBL.GetRaise(idNumber);
         }
-        [HttpGet("{id}")]
-        public async Task<Raise> GetRaiseById(int id)
-        {
-            return await raiseBL.GetRaiseById(id);
-        }
-
 
         // POST api/<DonorController>
         [HttpPost]
