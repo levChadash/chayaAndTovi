@@ -26,8 +26,9 @@ namespace DL
 
         public async Task<Group> GetGroupById(int id)
         {
-            Group g = await dmc.Groups.FindAsync(id);
+            var g = await dmc.Groups.Where(g => g.Id == id).FirstOrDefaultAsync();
             return g;
+           
         }
 
         public async Task<Group> GetGroupByNum(int num)
