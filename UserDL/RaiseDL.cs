@@ -57,7 +57,7 @@ namespace DL
             var raise = await GetRaiseById(id);
             if (raise == null)
                 return false;
-            dmc.Remove(raise);
+            dmc.Raises.Remove(raise);
             await dmc.SaveChangesAsync();
             return true;
         }
