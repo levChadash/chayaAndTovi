@@ -22,23 +22,23 @@ namespace MyFirstWebApiSite.Controllers
         }
 
         // GET: api/<VisitController>
-        [HttpGet]
+        [HttpGet("GetDonorsVisits")]
         public async Task<List<DonorsVisit>> GetDonorsVisits()
         {
             return await visitbl.GetDonorsVisits();
         }
-        [HttpGet]
+        [HttpGet("GetRaisesVisits")]
         public async Task<List<RisingVisit>> GetRaisesVisits()
         {
             return await visitbl.GetRaisesVisits();
         }
-        [HttpGet("{id}/{year}")]
+        [HttpGet("GetListOfVisitsByRaise/{id}/{year}")]
         public async Task<List<DonorsVisit>> GetListOfVisitsByRaise(int id, int year)
         {
             return await visitbl.GetListOfVisitsByRaise(id, year);
         }
 
-        [HttpGet("{id}/{year}")]
+        [HttpGet("GetDonorVisit/{id}/{year}")]
         public async Task<DonorsVisit> GetDonorVisit(int id, int year)
         {
             return await visitbl.GetDonorVisit(id, year);
@@ -58,12 +58,12 @@ namespace MyFirstWebApiSite.Controllers
         {
             return await visitbl.PostRaiseVisit(rv);
         }
-        [HttpPut("{id}/{dv}")]
+        [HttpPut("Donors/{id}/{dv}")]
         public async Task<bool> PutDonorVisit(int id, DonorsVisit dv)
         {
             return await visitbl.PutDonorVisit(id, dv);
         }
-        [HttpPut("{id}/{rv}")]
+        [HttpPut("Raises/{id}/{rv}")]
         public async Task<bool> PutRaiseVisit(int id, RisingVisit rv)
         {
             return await visitbl.PutRaiseVisit(id, rv);
