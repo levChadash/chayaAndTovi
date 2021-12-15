@@ -28,7 +28,6 @@ namespace DL
         }
         public async Task<List<DonorsVisit>> GetListOfVisitsByRaise(int id, int year)
         {
-
             List<RisingVisit> lrv = await dmc.RisingVisits.Where(d => d.RaiseId == id).ToListAsync();
             List<DonorsVisit> ldv = new List<DonorsVisit>();
             lrv.ForEach(async d =>

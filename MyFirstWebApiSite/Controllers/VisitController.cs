@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BL;
-using Entity;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,64 +12,36 @@ namespace MyFirstWebApiSite.Controllers
     [ApiController]
     public class VisitController : ControllerBase
     {
-        IVisitBL visitbl;
-
-        public VisitController(IVisitBL visitbl)
-        {
-            this.visitbl = visitbl; ;
-        }
-
         // GET: api/<VisitController>
         [HttpGet]
-        public async Task<List<DonorsVisit>> GetDonorsVisits()
+        public IEnumerable<string> Get()
         {
-            return await visitbl.GetDonorsVisits();
-        }
-        [HttpGet]
-        public async Task<List<RisingVisit>> GetRaisesVisits()
-        {
-            return await visitbl.GetRaisesVisits();
-        }
-        [HttpGet("{id}/{year}")]
-        public async Task<List<DonorsVisit>> GetListOfVisitsByRaise(int id, int year)
-        {
-            return await visitbl.GetListOfVisitsByRaise(id, year);
+            return new string[] { "value1", "value2" };
         }
 
-        [HttpGet("{id}/{year}")]
-        public async Task<DonorsVisit> GetDonorVisit(int id, int year)
-        {
-            return await visitbl.GetDonorVisit(id, year);
-        }
+        // GET api/<VisitController>/5
         [HttpGet("{id}")]
-        public async Task<List<DonorsVisit>> GetDonorsVisitsByYear(int year)
+        public string Get(int id)
         {
-            return await visitbl.GetDonorsVisitsByYear(year);
+            return "value";
         }
+
+        // POST api/<VisitController>
         [HttpPost]
-        public async Task<bool> PostDonorVisit(DonorsVisit dv)
+        public void Post([FromBody] VisitController value)
         {
-            return await visitbl.PostDonorVisit(dv);
         }
-        [HttpPost]
-        public async Task<bool> PostRaiseVisit(RisingVisit rv)
+
+        // PUT api/<VisitController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
         {
-            return await visitbl.PostRaiseVisit(rv);
         }
-        [HttpPut("{id}/{dv}")]
-        public async Task<bool> PutDonorVisit(int id, DonorsVisit dv)
+
+        // DELETE api/<VisitController>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
         {
-            return await visitbl.PutDonorVisit(id, dv);
-        }
-        [HttpPut("{id}/{rv}")]
-        public async Task<bool> PutRaiseVisit(int id, RisingVisit rv)
-        {
-            return await visitbl.PutRaiseVisit(id, rv);
-        }
-        [HttpDelete("{id}/{year}")]
-        public async Task<bool> DeleteDonorVisit(int id, int year)
-        {
-            return await visitbl.DeleteDonorVisit(id, year);
         }
 
 
