@@ -48,12 +48,12 @@ namespace MyFirstWebApiSite.Controllers
         {
             return await visitbl.GetDonorsVisitsByYear(year);
         }
-        [HttpPost]
+        [HttpPost("donor")]
         public async Task<bool> PostDonorVisit(DonorsVisit dv)
         {
             return await visitbl.PostDonorVisit(dv);
         }
-        [HttpPost]
+        [HttpPost("raise")]
         public async Task<bool> PostRaiseVisit(RisingVisit rv)
         {
             return await visitbl.PostRaiseVisit(rv);
