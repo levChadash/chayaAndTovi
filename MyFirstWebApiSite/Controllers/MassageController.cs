@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BL;
+using Entity;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,7 +22,7 @@ namespace MyFirstWebApiSite.Controllers
         }
         // GET: api/<MassageController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<List<Massage>> GetAsync()
         {
             return await massageBL.GetAllMassages();
         }
@@ -61,7 +62,7 @@ namespace MyFirstWebApiSite.Controllers
 
         // DELETE api/<MassageController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             return await massageBL.DeleteById(id);
         }
