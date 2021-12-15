@@ -22,28 +22,28 @@ namespace MyFirstWebApiSite.Controllers
         }
 
         // GET: api/<VisitController>
-        [HttpGet]
+        [HttpGet("donors")]
         public async Task<List<DonorsVisit>> GetDonorsVisits()
         {
             return await visitbl.GetDonorsVisits();
         }
-        [HttpGet]
+        [HttpGet("raises")]
         public async Task<List<RisingVisit>> GetRaisesVisits()
         {
             return await visitbl.GetRaisesVisits();
         }
-        [HttpGet("{id}/{year}")]
+        [HttpGet("{id}/raise/{year}")]
         public async Task<List<DonorsVisit>> GetListOfVisitsByRaise(int id, int year)
         {
             return await visitbl.GetListOfVisitsByRaise(id, year);
         }
 
-        [HttpGet("{id}/{year}")]
+        [HttpGet("{id}/donor/{year}")]
         public async Task<DonorsVisit> GetDonorVisit(int id, int year)
         {
             return await visitbl.GetDonorVisit(id, year);
         }
-        [HttpGet("{id}")]
+        [HttpGet("{year}")]
         public async Task<List<DonorsVisit>> GetDonorsVisitsByYear(int year)
         {
             return await visitbl.GetDonorsVisitsByYear(year);
