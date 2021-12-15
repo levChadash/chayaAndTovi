@@ -30,9 +30,10 @@ namespace DL
         {
             List<RisingVisit> lrv = await dmc.RisingVisits.Where(d => d.RaiseId == id).ToListAsync();
             List<DonorsVisit> ldv = new List<DonorsVisit>();
-            lrv.ForEach(async d =>
+            lrv.ForEach( rv =>
             {
-                ldv.Add(await dmc.DonorsVisits.Where(v => d.VisitId == v.Id && v.year == year).FirstOrDefaultAsync());
+                var x = dmc.DonorsVisits.Where(v => rv.VisitId == v.Id && v.year == year).FirstOrDefault();
+                ldv.Add(x);
             });
             return ldv;
         }

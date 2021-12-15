@@ -49,22 +49,22 @@ namespace MyFirstWebApiSite.Controllers
             return await visitbl.GetDonorsVisitsByYear(year);
         }
         [HttpPost("donor")]
-        public async Task<bool> PostDonorVisit(DonorsVisit dv)
+        public async Task<bool> PostDonorVisit([FromBody] DonorsVisit dv)
         {
             return await visitbl.PostDonorVisit(dv);
         }
         [HttpPost("raise")]
-        public async Task<bool> PostRaiseVisit(RisingVisit rv)
+        public async Task<bool> PostRaiseVisit([FromBody] RisingVisit rv)
         {
             return await visitbl.PostRaiseVisit(rv);
         }
-        [HttpPut("Donors/{id}/{dv}")]
-        public async Task<bool> PutDonorVisit(int id, DonorsVisit dv)
+        [HttpPut("Donors/{id}")]
+        public async Task<bool> PutDonorVisit(int id, [FromBody] DonorsVisit dv)
         {
             return await visitbl.PutDonorVisit(id, dv);
         }
-        [HttpPut("Raises/{id}/{rv}")]
-        public async Task<bool> PutRaiseVisit(int id, RisingVisit rv)
+        [HttpPut("Raises/{id}")]
+        public async Task<bool> PutRaiseVisit(int id, [FromBody] RisingVisit rv)
         {
             return await visitbl.PutRaiseVisit(id, rv);
         }
