@@ -27,18 +27,16 @@ namespace MyFirstWebApiSite.Controllers
             return await massageBL.GetAllMassages();
         }
 
-        // GET api/<MassageController>/5
-        //[Route("[action]/{groupId}")]
-        [HttpGet("{groupId}")]
+        [HttpGet("groupId/{groupId}")]
         public async Task<List<Massage>> GetMassagesByGroupId(int groupId )
         {
             return await massageBL.GetMassagesByGroupId(groupId);
         }
-        //[HttpGet("{id}")]
-        //public async Task<Massage> GetMassagesById(int id)
-        //{
-        //    return await massageBL.GetMassagesById(id);
-        //}
+        [HttpGet("{id}/massages")]
+        public async Task<Massage> GetMassagesById(int id)
+        {
+            return await massageBL.GetMassagesById(id);
+        }
 
         // POST api/<MassageController>
         [HttpPost]
@@ -47,7 +45,7 @@ namespace MyFirstWebApiSite.Controllers
             return await massageBL.Post(massage);
         }
 
-        [HttpPost("{text}")]
+        [HttpPost("text/{text}")]
         public async Task<int> PostText(string text)
         {
             return await massageBL.PostText(text);
