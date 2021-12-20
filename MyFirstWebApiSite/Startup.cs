@@ -44,7 +44,7 @@ namespace MyFirstWebApiSite
             services.AddScoped<IManagerDL, ManagerDL>();
             services.AddControllers();
             services.AddDbContext<DonationManagementContext>(options => options.UseSqlServer(
-               "Server=srv2\\pupils;Database=DonationManagement;Trusted_Connection=True;"), ServiceLifetime.Scoped);
+              Configuration.GetConnectionString("DonationManagement")), ServiceLifetime.Scoped);
 
             services.AddSwaggerGen(c =>
             {
@@ -53,8 +53,9 @@ namespace MyFirstWebApiSite
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
+            logger.LogInformation("the server up!!");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

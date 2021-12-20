@@ -5,15 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace DL
 {
     public class VisitDL : IVisitDL
     {
         DonationManagementContext dmc;
-        public VisitDL(DonationManagementContext dmc)
+        ILogger<VisitDL> logger;
+        public VisitDL(DonationManagementContext dmc, ILogger<VisitDL> logger )
         {
             this.dmc = dmc;
+            this.logger = logger;
         }
         public async Task<List<DonorsVisit>> GetDonorsVisits()
         {
@@ -28,14 +31,22 @@ namespace DL
         }
         public async Task<List<DonorsVisit>> GetListOfVisitsByRaise(int id, int year)
         {
-            List<RisingVisit> lrv = await dmc.RisingVisits.Where(d => d.RaiseId == id).ToListAsync();
-            List<DonorsVisit> ldv = new List<DonorsVisit>();
-            lrv.ForEach( rv =>
+            try
             {
-                var x = dmc.DonorsVisits.Where(v => rv.VisitId == v.Id && v.year == year).FirstOrDefault();
-                ldv.Add(x);
-            });
-            return ldv;
+                List<RisingVisit> lrv = await dmc.RisingVisits.Where(d => d.RaiseId == id).ToListAsync();
+                List<DonorsVisit> ldv = new List<DonorsVisit>();
+                lrv.ForEach(rv =>
+               {
+                   var x = dmc.DonorsVisits.Where(v => rv.VisitId == v.Id && v.year == year).FirstOrDefault();
+                   ldv.Add(x);
+               });
+                return ldv;
+            }
+            catch(Exception ex)
+            {
+                logger.LogError(ex.Message);
+            }
+            return null;
         }
 
 
