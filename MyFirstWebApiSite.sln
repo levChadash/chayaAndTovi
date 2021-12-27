@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFirstWebApiSite", "MyFirstWebApiSite\MyFirstWebApiSite.csproj", "{03DD4158-9E19-4935-A75D-88B31DC4EF47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "UserBL\BL.csproj", "{AC360E72-CE8C-4646-81E9-9FC4387A3480}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BL", "UserBL\BL.csproj", "{AC360E72-CE8C-4646-81E9-9FC4387A3480}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DL", "UserDL\DL.csproj", "{87D73401-713D-4A18-AE3D-26FCB5809DF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DL", "UserDL\DL.csproj", "{87D73401-713D-4A18-AE3D-26FCB5809DF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entity\Entity.csproj", "{A95FA5CF-9E99-4D90-B57E-E6753961D1E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entity", "Entity\Entity.csproj", "{A95FA5CF-9E99-4D90-B57E-E6753961D1E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{9A0BEA8D-6866-43DC-97CC-74669DFD12E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A95FA5CF-9E99-4D90-B57E-E6753961D1E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A95FA5CF-9E99-4D90-B57E-E6753961D1E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A95FA5CF-9E99-4D90-B57E-E6753961D1E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A0BEA8D-6866-43DC-97CC-74669DFD12E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A0BEA8D-6866-43DC-97CC-74669DFD12E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A0BEA8D-6866-43DC-97CC-74669DFD12E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A0BEA8D-6866-43DC-97CC-74669DFD12E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

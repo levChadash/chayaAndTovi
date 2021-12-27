@@ -43,6 +43,7 @@ namespace MyFirstWebApiSite
             services.AddScoped< IManagerBL, ManagerBL>();
             services.AddScoped<IManagerDL, ManagerDL>();
             services.AddControllers();
+            services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<DonationManagementContext>(options => options.UseSqlServer(
               Configuration.GetConnectionString("DonationManagement")), ServiceLifetime.Scoped);
 
