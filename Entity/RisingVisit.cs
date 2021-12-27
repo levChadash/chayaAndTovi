@@ -11,10 +11,10 @@ namespace Entity
         public int Id { get; set; }
         public int VisitId { get; set; }
         public int RaiseId { get; set; }
-        [JsonIgnore]
+        //
 
         public virtual Raise Raise { get; set; }
-        [JsonIgnore]
+        //
         public virtual DonorsVisit Visit { get; set; }
     }
 }

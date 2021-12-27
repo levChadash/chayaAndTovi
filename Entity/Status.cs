@@ -16,7 +16,7 @@ namespace Entity
         public int Id { get; set; }
         public string Status1 { get; set; }
         public bool Happen { get; set; }
-        [JsonIgnore]
+        //
         public virtual ICollection<DonorsVisit> DonorsVisits { get; set; }
     }
 }

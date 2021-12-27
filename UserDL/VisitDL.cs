@@ -42,7 +42,7 @@ namespace DL
                });
                 return ldv;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 logger.LogError(ex.Message);
             }

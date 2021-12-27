@@ -37,6 +37,21 @@ namespace DL
             var raise = await dmc.Raises.SingleOrDefaultAsync(d => d.IdNumber == idNumber);
             return raise;
         }
+
+        public async Task<List<DonorsVisit>> GetListOfVisitsByRaise(int id, int year)
+        {
+
+                List<RisingVisit> lrv = await dmc.Raises.Where(d => d.Id == id).Select(r=>r.RisingVisits).ToListAsync();
+                List<DonorsVisit> ldv = new List<DonorsVisit>();
+                lrv.ForEach(rv =>
+                {
+                    var x = dmc.DonorsVisits.Where(v => rv.VisitId == v.Id && v.year == year).FirstOrDefault();
+                    ldv.Add(x);
+                });
+                return ldv;
+            
+            return null;
+        }
         public async Task<bool> PostRaise(Raise raise)
         {
             await dmc.Raises.AddAsync(raise);

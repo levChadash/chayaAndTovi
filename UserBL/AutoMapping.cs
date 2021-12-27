@@ -13,18 +13,16 @@ namespace BL
     {
         public AutoMapping()
         {
-            CreateMap<Contact,ContactDTO>();
+            CreateMap<Contact, ContactDTO>();
             CreateMap<Donor, DonorDTO>();
             CreateMap<DonorsVisit, DonorsVisitDTO>();
             CreateMap<Group, GroupDTO>();
             CreateMap<Massage, MassageDTO>();
-            CreateMap<Raise, RaiseDTO>();
+            CreateMap<RaiseDTO, RaiseDTO>();
             CreateMap<RaisesInGroup, RaisesInGroupDTO>();
             CreateMap<RisingVisit, RisingVisitDTO>();
             CreateMap<Status, StatusDTO>();
             CreateMap<Time, TimeDTO>();
         }
-
-
     }
 }

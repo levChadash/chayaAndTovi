@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BL;
 using Entity;
+using DTO;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,25 +23,25 @@ namespace MyFirstWebApiSite.Controllers
         }
         // GET: api/<MassageController>
         [HttpGet]
-        public async Task<List<Massage>> GetAsync()
+        public async Task<List<MassageDTO>> GetAsync()
         {
             return await massageBL.GetAllMassages();
         }
 
         [HttpGet("groupId/{groupId}")]
-        public async Task<List<Massage>> GetMassagesByGroupId(int groupId )
+        public async Task<List<MassageDTO>> GetMassagesByGroupId(int groupId )
         {
             return await massageBL.GetMassagesByGroupId(groupId);
         }
         [HttpGet("{id}/massages")]
-        public async Task<Massage> GetMassagesById(int id)
+        public async Task<MassageDTO> GetMassagesById(int id)
         {
             return await massageBL.GetMassagesById(id);
         }
 
         // POST api/<MassageController>
         [HttpPost]
-        public async Task<int> Post([FromBody] Massage massage)
+        public async Task<int> Post([FromBody] MassageDTO massage)
         {
             return await massageBL.Post(massage);
         }

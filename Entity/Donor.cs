@@ -21,9 +21,9 @@ namespace Entity
         public int HouseNum { get; set; }
         public int? ContactId { get; set; }
         public int? Degree { get; set; }
-        [JsonIgnore]
+        //
         public virtual Contact Contact { get; set; }
-        [JsonIgnore]
+        //
         public virtual ICollection<DonorsVisit> DonorsVisits { get; set; }
     }
 }

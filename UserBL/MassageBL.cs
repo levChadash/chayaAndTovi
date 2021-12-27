@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using DL;
+using DTO;
 using Entity;
 
 namespace BL
@@ -11,25 +13,34 @@ namespace BL
      public class MassageBL : IMassageBL
     {
         IMassageDL mdl;
-        public MassageBL(IMassageDL mdl)
+        IMapper mapper;
+        public MassageBL(IMassageDL mdl, IMapper mapper)
         {
             this.mdl = mdl;
+            this.mapper = mapper;
         }
-        public async Task<List<Massage>> GetAllMassages()
+        public async Task<List<MassageDTO>> GetAllMassages()
         {
-            return await mdl.GetAllMassages();
+            List < Massage> lm= await mdl.GetAllMassages();
+            List < MassageDTO > lmDTO= mapper.Map<List<Massage>, List<MassageDTO>>(lm);
+            return lmDTO;
         }
-        public async Task<List<Massage>> GetMassagesByGroupId(int groupId )
+        public async Task<List<MassageDTO>> GetMassagesByGroupId(int groupId )
         {
-            return await mdl.GetMassagesByGroupId(groupId);
+            List<Massage> lm = await mdl.GetMassagesByGroupId(groupId);
+            List<MassageDTO> lmDTO = mapper.Map<List<Massage>, List<MassageDTO>>(lm);
+            return lmDTO;
         }
-        public async Task<Massage> GetMassagesById(int id)
+        public async Task<MassageDTO> GetMassagesById(int id)
         {
-            return await mdl.GetMassagesById(id);
+            Massage m = await mdl.GetMassagesById(id);
+            MassageDTO mDTO = mapper.Map<Massage, MassageDTO>(m);
+            return mDTO;
         }
-        public async Task<int> Post(Massage massage)
+        public async Task<int> Post(MassageDTO massage)
         {
-            return await mdl.Post(massage);
+           Massage mm= mapper.Map<MassageDTO,Massage >(massage);
+            return await mdl.Post(mm);
         }
         public async Task<int> PostText(string text)
         {

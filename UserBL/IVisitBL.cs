@@ -1,4 +1,5 @@
-﻿using Entity;
+﻿using DTO;
+using Entity;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -7,14 +8,14 @@ namespace BL
     public interface IVisitBL
     {
         Task<bool> DeleteDonorVisit(int id, int year);
-        Task<List<DonorsVisit>> GetDonorsVisits();
-        Task<List<DonorsVisit>> GetDonorsVisitsByYear(int year);
-        Task<DonorsVisit> GetDonorVisit(int id, int year);
-        Task<List<DonorsVisit>> GetListOfVisitsByRaise(int id, int year);
-        Task<List<RisingVisit>> GetRaisesVisits();
-        Task<bool> PostDonorVisit(DonorsVisit dv);
-        Task<bool> PostRaiseVisit(RisingVisit rv);
-        Task<bool> PutDonorVisit(int id, DonorsVisit dv);
-        Task<bool> PutRaiseVisit(int id, RisingVisit rv);
+        Task<List<DonorsVisitDTO>> GetDonorsVisits();
+        Task<List<DonorsVisitDTO>> GetDonorsVisitsByYear(int year);
+        Task<DonorsVisitDTO> GetDonorVisit(int id, int year);
+        Task<List<DonorsVisitDTO>> GetListOfVisitsByRaise(int id, int year);
+        Task<List<RisingVisitDTO>> GetRaisesVisits();
+        Task<bool> PostDonorVisit(DonorsVisitDTO dv);
+        Task<bool> PostRaiseVisit(RisingVisitDTO rv);
+        Task<bool> PutDonorVisit(int id, DonorsVisitDTO dv);
+        Task<bool> PutRaiseVisit(int id, RisingVisitDTO rv);
     }
 }

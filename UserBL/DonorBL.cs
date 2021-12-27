@@ -5,39 +5,51 @@ using System.Text;
 using DL;
 using System.Threading.Tasks;
 using Entity;
+using AutoMapper;
+using DTO;
 
 namespace BL
 {
     public class DonorBL : IDonorBL
     {
         IDonorDL ddl;
-        public DonorBL(IDonorDL ddl)
+        IMapper mapper;
+        public DonorBL(IDonorDL ddl, IMapper mapper)
         {
             this.ddl = ddl;
+            this.mapper = mapper;
         }
 
-        public async Task<List<Donor>> GetDonors() {
-           return await ddl.GetDonors();
+        public async Task<List<DonorDTO>> GetDonors() {
+            List<Donor> ld = await ddl.GetDonors();
+            List<DonorDTO> ldDTO = mapper.Map<List<Donor>, List<DonorDTO>>(ld);
+            return ldDTO;
         }
 
-        public async Task<Donor> GetDonorById(int id)
+        public async Task<DonorDTO> GetDonorById(int id)
         {
-            return await ddl.GetDonorById(id);
+            Donor d= await ddl.GetDonorById(id);
+            DonorDTO dDTO = mapper.Map<Donor, DonorDTO>(d);
+            return dDTO;
         }
 
-        public async Task<List<Donor>> GetDonor(string fn, string ln)
+        public async Task<List<DonorDTO>> GetDonor(string fn, string ln)
         {
-            return await ddl.GetDonor(fn, ln);
+            List<Donor> ld = await ddl.GetDonor(fn, ln);
+            List<DonorDTO> ldDTO = mapper.Map<List<Donor>, List<DonorDTO>>(ld);
+            return ldDTO;
         }
 
-        public async Task<bool> PostDonor( Donor d)
+        public async Task<bool> PostDonor(DonorDTO d)
         {
-            return await ddl.PostDonor(d);
+            Donor dd = mapper.Map<DonorDTO, Donor>(d);
+            return await ddl.PostDonor(dd);
         }
 
-        public async Task<bool> PutDonor(int id, Donor d)
+        public async Task<bool> PutDonor(int id, DonorDTO d)
         {
-            return await ddl.PutDonor(id,d);
+            Donor dd = mapper.Map<DonorDTO, Donor>(d);
+            return await ddl.PutDonor(id, dd);
         }
 
         public async Task<bool> DeleteDonor(int id)

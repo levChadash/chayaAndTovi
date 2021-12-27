@@ -1,4 +1,6 @@
-﻿using DL;
+﻿using AutoMapper;
+using DL;
+using DTO;
 using Entity;
 using System;
 using System.Collections.Generic;
@@ -11,53 +13,69 @@ namespace BL
     public class VisitBL : IVisitBL
     {
         IVisitDL visitDL;
-        public VisitBL(IVisitDL visitDL)
+        IMapper mapper;
+        public VisitBL(IVisitDL visitDL, IMapper mapper)
         {
             this.visitDL = visitDL;
+            this.mapper = mapper;
         }
 
-        public async Task<List<DonorsVisit>> GetDonorsVisits()
+        public async Task<List<DonorsVisitDTO>> GetDonorsVisits()
         {
-            return await visitDL.GetDonorsVisits();
+            List<DonorsVisit> ld = await visitDL.GetDonorsVisits();
+            List<DonorsVisitDTO> ldDTO = mapper.Map<List<DonorsVisit>, List<DonorsVisitDTO>>(ld);
+            return ldDTO;
         }
 
-        public async Task<List<RisingVisit>> GetRaisesVisits()
+        public async Task<List<RisingVisitDTO>> GetRaisesVisits()
         {
-            return await visitDL.GetRaisesVisits();
+            List<RisingVisit> lr = await visitDL.GetRaisesVisits();
+            List<RisingVisitDTO> lrDTO = mapper.Map<List<RisingVisit>, List<RisingVisitDTO>>(lr);
+            return lrDTO;
         }
-        public async Task<List<DonorsVisit>> GetListOfVisitsByRaise(int id, int year)
+        public async Task<List<DonorsVisitDTO>> GetListOfVisitsByRaise(int id, int year)
         {
-            return await visitDL.GetListOfVisitsByRaise(id, year);
-        }
-
-
-        public async Task<DonorsVisit> GetDonorVisit(int id, int year)
-        {
-            return await visitDL.GetDonorVisit(id, year);
+            List<DonorsVisit> ld = await visitDL.GetListOfVisitsByRaise(id, year);
+            List<DonorsVisitDTO> ldDTO = mapper.Map<List<DonorsVisit>, List<DonorsVisitDTO>>(ld);
+            return ldDTO;
         }
 
-        public async Task<List<DonorsVisit>> GetDonorsVisitsByYear(int year)
+
+        public async Task<DonorsVisitDTO> GetDonorVisit(int id, int year)
         {
-            return await visitDL.GetDonorsVisitsByYear(year);
+            DonorsVisit d = await visitDL.GetDonorVisit(id, year);
+            DonorsVisitDTO dDTO = mapper.Map<DonorsVisit, DonorsVisitDTO>(d);
+            return dDTO;
         }
 
-        public async Task<bool> PostDonorVisit(DonorsVisit dv)
+        public async Task<List<DonorsVisitDTO>> GetDonorsVisitsByYear(int year)
         {
-            return await visitDL.PostDonorVisit(dv);
+            List<DonorsVisit> ld = await visitDL.GetDonorsVisitsByYear(year);
+            List<DonorsVisitDTO> ldDTO = mapper.Map<List<DonorsVisit>, List<DonorsVisitDTO>>(ld);
+            return ldDTO;
         }
 
-        public async Task<bool> PostRaiseVisit(RisingVisit rv)
+        public async Task<bool> PostDonorVisit(DonorsVisitDTO dv)
         {
-            return await visitDL.PostRaiseVisit(rv);
-        }
-        public async Task<bool> PutDonorVisit(int id, DonorsVisit dv)
-        {
-            return await visitDL.PutDonorVisit(id, dv);
+            DonorsVisit dd= mapper.Map< DonorsVisitDTO, DonorsVisit> (dv);
+            return await visitDL.PostDonorVisit(dd);
         }
 
-        public async Task<bool> PutRaiseVisit(int id, RisingVisit rv)
+        public async Task<bool> PostRaiseVisit(RisingVisitDTO rv)
         {
-            return await visitDL.PutRaiseVisit(id, rv);
+            RisingVisit rr = mapper.Map<RisingVisitDTO, RisingVisit>(rv);
+            return await visitDL.PostRaiseVisit(rr);
+        }
+        public async Task<bool> PutDonorVisit(int id, DonorsVisitDTO dv)
+        {
+            DonorsVisit dd = mapper.Map<DonorsVisitDTO, DonorsVisit>(dv);
+            return await visitDL.PutDonorVisit(id, dd);
+        }
+
+        public async Task<bool> PutRaiseVisit(int id, RisingVisitDTO rv)
+        {
+            RisingVisit rr = mapper.Map<RisingVisitDTO, RisingVisit>(rv);
+            return await visitDL.PutRaiseVisit(id, rr);
         }
         public async Task<bool> DeleteDonorVisit(int id, int year)
         {

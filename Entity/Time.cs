@@ -16,9 +16,9 @@ namespace Entity
 
         public int Id { get; set; }
         public string Time1 { get; set; }
-        [JsonIgnore]
+        //
         public virtual ICollection<DonorsVisit> DonorsVisits { get; set; }
-        [JsonIgnore]
+        //
         public virtual ICollection<Group> Groups { get; set; }
     }
 }

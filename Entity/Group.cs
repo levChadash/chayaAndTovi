@@ -23,17 +23,17 @@ namespace Entity
         public string Password { get; set; }
         public bool WithCar { get; set; }
 
-        [JsonIgnore]
+        //
         public int? PreferredTimeId { get; set; }
-        [JsonIgnore]
+        //
         public virtual Time PreferredTime { get; set; }
-        [JsonIgnore]
+        //
         public virtual Raise TeamHead { get; set; }
-        [JsonIgnore]
+        //
         public virtual ICollection<DonorsVisit> DonorsVisits { get; set; }
-        [JsonIgnore]
+        //
         public virtual ICollection<Massage> Massages { get; set; }
-        [JsonIgnore]
+        //
         public virtual ICollection<RaisesInGroup> RaisesInGroups { get; set; }
     }
 }

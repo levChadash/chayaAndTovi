@@ -1,4 +1,5 @@
 ﻿using BL;
+using DTO;
 using Entity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -23,34 +24,34 @@ namespace MyFirstWebApiSite.Controllers
             }
         // GET: api/<RaiseController>
         [HttpGet]
-            public async Task<List<Raise>> GetRaise()
+            public async Task<List<RaiseDTO>> GetRaise()
             {
                 return await raiseBL.GetRaise();
             }
 
         // GET api/<RaiseController>/5
         [HttpGet("{fn}/{ln}")]
-            public async Task<List<Raise>> GetRaise(string fn, string ln)
+            public async Task<List<RaiseDTO>> GetRaise(string fn, string ln)
             {
                 return await raiseBL.GetRaise(fn, ln);
             }
         // GET api/<RaiseController>/5
         [HttpGet("{idNumber}")]
-        public async Task<Raise> GetRaise(string idNumber)
+        public async Task<RaiseDTO> GetRaise(string idNumber)
         {
             return await raiseBL.GetRaise(idNumber);
         }
 
         // POST api/<DonorController>
         [HttpPost]
-            public async Task<bool> PostRaise([FromBody] Raise d)
+            public async Task<bool> PostRaise([FromBody] RaiseDTO d)
             {
                 return await raiseBL.PostRaise(d);
             }
 
         // PUT api/<RaiseController>/5
         [HttpPut]
-            public async Task<bool> PutRaise( [FromBody] Raise raise)
+            public async Task<bool> PutRaise( [FromBody] RaiseDTO raise)
             {
                 return await raiseBL.PutRaise(raise);
             }

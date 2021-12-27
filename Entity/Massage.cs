@@ -11,7 +11,7 @@ namespace Entity
         public int Id { get; set; }
         public int? GroupId { get; set; }
         public string Text { get; set; }
-        [JsonIgnore]
+        //
         public virtual Group Group { get; set; }
     }
 }

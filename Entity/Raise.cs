@@ -7,6 +7,7 @@ using System.Text.Json.Serialization;
 namespace Entity
 {
     public partial class Raise
+
     {
         public Raise()
         {
@@ -21,11 +22,11 @@ namespace Entity
         public string IdNumber { get; set; }
         public int Year { get; set; }
         public string Remark { get; set; }
-        [JsonIgnore]
+        //
         public virtual ICollection<Group> Groups { get; set; }
-        [JsonIgnore]
+        //
         public virtual ICollection<RaisesInGroup> RaisesInGroups { get; set; }
-        [JsonIgnore]
+        //
         public virtual ICollection<RisingVisit> RisingVisits { get; set; }
     }
 }

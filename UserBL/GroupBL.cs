@@ -1,4 +1,6 @@
-﻿using DL;
+﻿using AutoMapper;
+using DL;
+using DTO;
 using Entity;
 using System;
 using System.Collections.Generic;
@@ -11,41 +13,59 @@ namespace BL
     public class GroupBL : IGroupBL
     {
         IGroupDL gdl;
-        public GroupBL(IGroupDL gdl)
+        IMapper mapper;
+        public GroupBL(IGroupDL gdl,IMapper mapper)
         {
             this.gdl = gdl;
+            this.mapper = mapper;
         }
 
-        public async Task<Group> GetGroupByIdOfHead(int id)
+        public async Task<GroupDTO> GetGroupByIdOfHead(int id)
         {
-            return await gdl.GetGroupByIdOfHead(id);
+            Group g = await gdl.GetGroupByIdOfHead(id);
+            GroupDTO gDTO = mapper.Map<Group, GroupDTO>(g);
+
+            return gDTO;
         }
 
-        public async Task<Group> GetGroupById(int id)
+        public async Task<GroupDTO> GetGroupById(int id)
         {
-            return await gdl.GetGroupById(id);
+            Group g = await gdl.GetGroupById(id);
+            GroupDTO gDTO = mapper.Map<Group, GroupDTO>(g);
+
+            return gDTO;
         }
 
-        public async Task<Group> GetGroupByNum(int num)
+        public async Task<GroupDTO> GetGroupByNum(int num)
         {
-            return await gdl.GetGroupByNum(num);
+            Group g = await gdl.GetGroupByNum(num);
+            GroupDTO gDTO = mapper.Map<Group, GroupDTO>(g);
+
+            return gDTO;
         }
-        public async Task<List<Raise>> GetListOfRaisesInGroup(int id)
+        public async Task<List<DTO.RaiseDTO>> GetListOfRaisesInGroup(int id)
         {
-            return await gdl.GetListOfRaisesInGroup(id);
+            List<Entity.RaiseDTO> lr = await gdl.GetListOfRaisesInGroup(id);
+            List<RaiseDTO> lrDTO = mapper.Map<List<RaiseDTO>, List<RaiseDTO>>(lr);
+            return lrDTO;
         }
 
-        public async Task<List<Group>> GetGroups()
+        public async Task<List<GroupDTO>> GetGroups()
         {
-            return await gdl.GetGroups();
+            List<Group> lg = await gdl.GetGroups();
+            List<GroupDTO> lgDTO = mapper.Map<List<Group>, List<GroupDTO>>(lg);
+
+            return lgDTO;
         }
-        public async Task<bool> PostGroup(Group g)
+        public async Task<bool> PostGroup(GroupDTO g)
         {
-            return await gdl.PostGroup(g);
+            Group gg = mapper.Map<GroupDTO, Group>(g);
+            return await gdl.PostGroup(gg);
         }
-        public async Task<bool> PutGroup(int id, Group g)
+        public async Task<bool> PutGroup(int id, GroupDTO g)
         {
-            return await gdl.PutGroup(id, g);
+            Group gg = mapper.Map<GroupDTO, Group>(g);
+            return await gdl.PutGroup(id, gg);
 
         }
 

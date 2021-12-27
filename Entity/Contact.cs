@@ -15,7 +15,7 @@ namespace Entity
 
         public int Id { get; set; }
         public string ContactType { get; set; }
-        [JsonIgnore]
+        //
         public virtual ICollection<Donor> Donors { get; set; }
     }
 }
