@@ -2,7 +2,7 @@
 using Entity;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using RaiseDTO = DTO.RaiseDTO;
+
 
 namespace BL
 {
