@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BL;
 using Entity;
+using DTO;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -23,7 +24,7 @@ namespace MyFirstWebApiSite.Controllers
 
         // GET: api/<VisitController>
         [HttpGet("donors")]
-        public async Task<List<DonorsVisit>> GetDonorsVisits()
+        public async Task<List<DonorsVisitDTO>> GetDonorsVisits()
         {
             return await visitbl.GetDonorsVisits();
         }
