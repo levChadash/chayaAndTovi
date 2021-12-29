@@ -29,43 +29,43 @@ namespace MyFirstWebApiSite.Controllers
             return await visitbl.GetDonorsVisits();
         }
         [HttpGet("raises")]
-        public async Task<List<RisingVisit>> GetRaisesVisits()
+        public async Task<List<RisingVisitDTO>> GetRaisesVisits()
         {
             return await visitbl.GetRaisesVisits();
         }
         [HttpGet("{id}/raise/{year}")]
-        public async Task<List<DonorsVisit>> GetListOfVisitsByRaise(int id, int year)
+        public async Task<List<DonorsVisitDTO>> GetListOfVisitsByRaise(int id, int year)
         {
             return await visitbl.GetListOfVisitsByRaise(id, year);
         }
 
         [HttpGet("{id}/donor/{year}")]
-        public async Task<DonorsVisit> GetDonorVisit(int id, int year)
+        public async Task<DonorsVisitDTO> GetDonorVisit(int id, int year)
         {
             return await visitbl.GetDonorVisit(id, year);
         }
         [HttpGet("{year}")]
-        public async Task<List<DonorsVisit>> GetDonorsVisitsByYear(int year)
+        public async Task<List<DonorsVisitDTO>> GetDonorsVisitsByYear(int year)
         {
             return await visitbl.GetDonorsVisitsByYear(year);
         }
         [HttpPost("donor")]
-        public async Task<bool> PostDonorVisit([FromBody] DonorsVisit dv)
+        public async Task<bool> PostDonorVisit([FromBody] DonorsVisitDTO dv)
         {
             return await visitbl.PostDonorVisit(dv);
         }
         [HttpPost("raise")]
-        public async Task<bool> PostRaiseVisit([FromBody] RisingVisit rv)
+        public async Task<bool> PostRaiseVisit([FromBody] RisingVisitDTO rv)
         {
             return await visitbl.PostRaiseVisit(rv);
         }
         [HttpPut("Donors/{id}")]
-        public async Task<bool> PutDonorVisit(int id, [FromBody] DonorsVisit dv)
+        public async Task<bool> PutDonorVisit(int id, [FromBody] DonorsVisitDTO dv)
         {
             return await visitbl.PutDonorVisit(id, dv);
         }
         [HttpPut("Raises/{id}")]
-        public async Task<bool> PutRaiseVisit(int id, [FromBody] RisingVisit rv)
+        public async Task<bool> PutRaiseVisit(int id, [FromBody] RisingVisitDTO rv)
         {
             return await visitbl.PutRaiseVisit(id, rv);
         }
