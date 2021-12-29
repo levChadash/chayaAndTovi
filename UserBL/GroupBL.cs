@@ -43,9 +43,9 @@ namespace BL
 
             return gDTO;
         }
-        public async Task<List<DTO.RaiseDTO>> GetListOfRaisesInGroup(int id)
+        public async Task<List<RaiseDTO>> GetListOfRaisesInGroup(int id)
         {
-            List<Entity.RaiseDTO> lr = await gdl.GetListOfRaisesInGroup(id);
+            List<RaiseDTO> lr = await gdl.GetListOfRaisesInGroup(id);
             List<RaiseDTO> lrDTO = mapper.Map<List<RaiseDTO>, List<RaiseDTO>>(lr);
             return lrDTO;
         }
