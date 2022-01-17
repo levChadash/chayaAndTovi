@@ -14,5 +14,6 @@ namespace DL
         Task<bool> PostGroup(Group g);
         Task<bool> PutGroup(int id, Group g);
         Task<List<Raise>> GetListOfRaisesInGroup(int id);
+        Task<Group> GetGroupByPassword(string pass);
     }
 }

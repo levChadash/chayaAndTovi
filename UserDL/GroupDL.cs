@@ -42,6 +42,13 @@ namespace DL
            
         }
 
+        public async Task<Group> GetGroupByPassword(string pass)
+        {
+            var g = await dmc.Groups.Where(g => g.Password == pass).FirstOrDefaultAsync();
+            return g;
+
+        }
+
         public async Task<Group> GetGroupByNum(int num)
         {
             Group g = await dmc.Groups.Where(g => g.GroupNum == num).FirstOrDefaultAsync();

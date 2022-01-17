@@ -16,7 +16,7 @@ namespace BL
             CreateMap<Contact, ContactDTO>();
             CreateMap<Donor, DonorDTO>();
             CreateMap<DonorsVisit, DonorsVisitDTO>();
-            CreateMap<Group, GroupDTO>();
+            CreateMap<Group, GroupDTO>().ForMember(gDTO=>gDTO.TeamHead,opts=>opts.MapFrom(src=>src.TeamHead.FirstName+ " "+src.TeamHead.LastName));
             CreateMap<Massage, MassageDTO>();
             CreateMap<RaiseDTO, RaiseDTO>();
             CreateMap<RaisesInGroup, RaisesInGroupDTO>();
@@ -24,5 +24,7 @@ namespace BL
             CreateMap<Status, StatusDTO>();
             CreateMap<Time, TimeDTO>();
         }
+
+
     }
 }
