@@ -9,7 +9,7 @@ namespace BL
     {
         Task<bool> DeleteGroup(int id);
         Task<GroupDTO> GetGroupById(int id);
-        Task<GroupDTO> GetGroupByPassword(string pass);
+        Task<GroupDTO> GetGroupByPassword(string pass,string name);
         Task<GroupDTO> GetGroupByIdOfHead(int id);
         Task<GroupDTO> GetGroupByNum(int num);
         Task<List<RaiseDTO>> GetListOfRaisesInGroup(int id);

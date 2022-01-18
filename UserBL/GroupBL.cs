@@ -36,12 +36,13 @@ namespace BL
             return gDTO;
         }
 
-        public async Task<GroupDTO> GetGroupByPassword(string pass)
+        public async Task<GroupDTO> GetGroupByPassword(string pass,string name)
         {
             Group g = await gdl.GetGroupByPassword(pass);
             GroupDTO gDTO = mapper.Map<Group, GroupDTO>(g);
-
-            return gDTO;
+            if (gDTO.TeamHead==name)
+                return gDTO;
+            return null;
         }
 
 

@@ -22,6 +22,6 @@ namespace MyFirstWebApiSite
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                })/*.UseNLog()*/;
-    }
+                });/*.UseNLog();*/
+    } 
 }
