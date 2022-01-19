@@ -18,6 +18,7 @@ namespace DL
             : base(options)
         {
         }
+        
 
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Donor> Donors { get; set; }
@@ -30,6 +31,7 @@ namespace DL
         public virtual DbSet<RisingVisit> RisingVisits { get; set; }
         public virtual DbSet<Status> Statuses { get; set; }
         public virtual DbSet<Time> Times { get; set; }
+        public virtual DbSet<Rating> Rating { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -78,7 +80,40 @@ namespace DL
                     .HasConstraintName("FK_Donors_Contacts");
             });
 
-            modelBuilder.Entity<DonorsVisit>(entity =>
+            modelBuilder.Entity<Rating>(entity =>
+            {
+                entity.ToTable("RATING");
+
+                entity.Property(e => e.RatingId).HasColumnName("RATING_ID");
+
+                entity.Property(e => e.Host)
+                    .HasColumnName("HOST")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Method)
+                    .HasColumnName("METHOD")
+                    .HasMaxLength(10)
+                    .IsFixedLength();
+
+                entity.Property(e => e.Path)
+                    .HasColumnName("PATH")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.RecordDate)
+                 .HasColumnName("Record_Date")
+                 .HasColumnType("datetime");
+
+                entity.Property(e => e.Referer)
+                    .HasColumnName("REFERER")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.UserAgent).HasColumnName("USER_AGENT");
+            });
+
+            //add on declaration part
+        
+
+        modelBuilder.Entity<DonorsVisit>(entity =>
             {
                 entity.ToTable("DonorsVisit");
 

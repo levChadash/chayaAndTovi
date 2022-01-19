@@ -6,6 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace Entity
 {
+
     public partial class Contact
     {
         public Contact()

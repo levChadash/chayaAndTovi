@@ -59,12 +59,26 @@ namespace MyFirstWebApiSite
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
             logger.LogInformation("the server up!!");
+            app.UseCacheMiddleWare();
+            app.UseErrorsMiddleWare();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyFirstWebApiSite v1"));
             }
+
+            app.Map("/api", app2 =>
+            {
+                app2.UseRouting();
+                app2.UseRatingMiddleware();
+                app2.UseAuthorization();
+
+                app2.UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                });
+            });
 
             app.UseHttpsRedirection();
 
