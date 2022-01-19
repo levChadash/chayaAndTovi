@@ -39,10 +39,13 @@ namespace BL
         public async Task<GroupDTO> GetGroupByPassword(string pass,string name)
         {
             Group g = await gdl.GetGroupByPassword(pass);
+            string n = g.TeamHead.FirstName+" "+g.TeamHead.LastName;
             GroupDTO gDTO = mapper.Map<Group, GroupDTO>(g);
-            if (gDTO.TeamHead==name)
-                return gDTO;
-            return null;
+             if (n==name)
+                 return gDTO;
+             else
+                 return null;
+            return gDTO;
         }
 
 
