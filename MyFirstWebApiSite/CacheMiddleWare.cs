@@ -17,7 +17,7 @@ namespace MyFirstWebApiSite
                 _next = next;
             }
 
-            public Task Invoke(HttpContext httpContext)
+            public async  Task Invoke(HttpContext httpContext)
             {
                 httpContext.Response.GetTypedHeaders().CacheControl =
                 new Microsoft.Net.Http.Headers.CacheControlHeaderValue()
@@ -25,7 +25,7 @@ namespace MyFirstWebApiSite
                     Public = true,
                     MaxAge = TimeSpan.FromSeconds(10)
                 };
-                return _next(httpContext);
+                await _next(httpContext);
             }
         }
 

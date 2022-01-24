@@ -29,7 +29,9 @@ namespace MyFirstWebApiSite.Controllers
             return await groupBL.GetGroups();
         }
 
-        [HttpGet("groupPass/{groupPass},{name}")]
+        [HttpGet("groupPass/{groupPass}/{name}")]
+        //[HttpGet("groupPass/{groupPass},{name}")]
+
 
 
         public async Task<GroupDTO> GetGroupByPassword(string groupPass,string name)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DL
 {
-    class RatingDL : IRatingDL
+    public class RatingDL : IRatingDL
     {
         DonationManagementContext dmc;
         public RatingDL(DonationManagementContext dmc)
