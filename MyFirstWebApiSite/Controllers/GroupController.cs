@@ -30,11 +30,13 @@ namespace MyFirstWebApiSite.Controllers
         }
 
         [HttpGet("groupPass/{groupPass}/{name}")]
+        //[HttpGet("groupPass/{groupPass},{name}")]
 
 
-        public async Task<GroupDTO> GetGroupByPassword(string groupPass, string name)
+
+        public async Task<GroupDTO> GetGroupByPassword(string groupPass,string name)
         {
-            return await groupBL.GetGroupByPassword(groupPass,name);
+            return await groupBL.GetGroupByPassword(groupPass, name);
         }
 
         [HttpGet("groupNum/{groupNum}")]

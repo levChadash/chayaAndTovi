@@ -43,6 +43,10 @@ namespace MyFirstWebApiSite
             services.AddScoped<IDonorDL, DonorDL>();
             services.AddScoped< IManagerBL, ManagerBL>();
             services.AddScoped<IManagerDL, ManagerDL>();
+            services.AddScoped<IRatingBL, RatingBL>();
+            services.AddScoped<IRatingDL, RatingDL>();
+
+
             services.AddControllers();
 
             services.AddAutoMapper(typeof(Startup));
@@ -58,20 +62,25 @@ namespace MyFirstWebApiSite
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
-            logger.LogInformation("the server up!!");
-            app.UseCacheMiddleWare();
             app.UseErrorsMiddleWare();
+            app.UseCacheMiddleWare();
+       
+          app.UseRatingMiddleWare();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyFirstWebApiSite v1"));
             }
-
+            app.UseHttpsRedirection();
+  
+            app.UseRouting();
+            
             app.Map("/api", app2 =>
             {
                 app2.UseRouting();
-                app2.UseRatingMiddleware();
+               // app2.UseRatingMiddleware();
                 app2.UseAuthorization();
 
                 app2.UseEndpoints(endpoints =>
@@ -80,17 +89,20 @@ namespace MyFirstWebApiSite
                 });
             });
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
-            app.UseRouting();
-            app.UseStaticFiles();
+            //app.UseRouting();
+            //app.UseStaticFiles();
 
             app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+            logger.LogInformation("logger-startup");
+            logger.LogError("logger-mail-startup");
         }
     }
 }

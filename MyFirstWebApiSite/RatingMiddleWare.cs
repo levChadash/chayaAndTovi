@@ -15,7 +15,7 @@ namespace MyFirstWebApiSite
     public class RatingMiddleWare
     {
         private readonly RequestDelegate _next;
-        ILogger<RatingMiddleWare> _logger;
+
         IRatingBL rbl;
         public RatingMiddleWare(RequestDelegate next)
         {
@@ -42,7 +42,7 @@ namespace MyFirstWebApiSite
     // Extension method used to add the middleware to the HTTP request pipeline.
     public static class RatingMiddlewareExtensions
     {
-        public static IApplicationBuilder UseRatingMiddleware(this IApplicationBuilder builder)
+        public static IApplicationBuilder UseRatingMiddleWare(this IApplicationBuilder builder)
         {
             return builder.UseMiddleware<RatingMiddleWare>();
         }
