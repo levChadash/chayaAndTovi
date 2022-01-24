@@ -29,7 +29,7 @@ namespace MyFirstWebApiSite.Controllers
             return await groupBL.GetGroups();
         }
 
-        [HttpGet("groupPass/{groupPass},{name}")]
+        [HttpGet("groupPass/{groupPass}/{name}")]
 
 
         public async Task<GroupDTO> GetGroupByPassword(string groupPass, string name)
@@ -52,7 +52,7 @@ namespace MyFirstWebApiSite.Controllers
             return await groupBL.GetGroupById(id);
         }
 
-        [HttpGet("{id}/raises")]
+        [HttpGet("raises/{id}")]
         public async Task<List<DTO.RaiseDTO>> GetListOfRaisesInGroup(int id)
         {
             return await groupBL.GetListOfRaisesInGroup(id);

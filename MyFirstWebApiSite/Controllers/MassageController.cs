@@ -33,7 +33,7 @@ namespace MyFirstWebApiSite.Controllers
         {
             return await massageBL.GetMassagesByGroupId(groupId);
         }
-        [HttpGet("{id}/massages")]
+        [HttpGet("massages/{id}")]
         public async Task<MassageDTO> GetMassagesById(int id)
         {
             return await massageBL.GetMassagesById(id);
