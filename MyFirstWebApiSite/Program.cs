@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NLog.Web;
 //using NLog.Web;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,6 @@ namespace MyFirstWebApiSite
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });/*.UseNLog();*/
+                }).UseNLog();
     } 
 }

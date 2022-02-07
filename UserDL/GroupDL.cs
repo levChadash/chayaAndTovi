@@ -73,7 +73,11 @@ namespace DL
             if (g2 == null)
                 return false;
             dmc.Entry(g2).CurrentValues.SetValues(g);
-            await dmc.SaveChangesAsync();
+            await dmc.
+                
+                
+                
+                SaveChangesAsync();
             return true;
 
         }

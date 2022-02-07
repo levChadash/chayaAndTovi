@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MyFirstWebApiSite
 {
- 
+
     public class RatingMiddleWare
     {
         private readonly RequestDelegate _next;
@@ -26,13 +26,14 @@ namespace MyFirstWebApiSite
         public async Task Invoke(HttpContext httpContext, IRatingBL rbl)
         {
             this.rbl = rbl;
-            Rating r = new Rating { 
+            Rating r = new Rating
+            {
                 Host = httpContext.Request.Host.ToString(),
                 RecordDate = DateTime.Now,
                 Method = httpContext.Request.Method,
                 Path = httpContext.Request.Path.Value,
                 Referer = httpContext.Request.Headers["Referrer"],
-                UserAgent = httpContext.Request.Headers["UserAgent"].ToString()
+                UserAgent = httpContext.Request.Headers["User-Agent"].ToString()
             };
             await rbl.PostRating(r);
             await _next(httpContext);

@@ -11,36 +11,36 @@ namespace MyFirstWebApiSite
 {
     public class ErrorsMiddleWare
     {
-      
-            private readonly RequestDelegate _next;
 
-            public ErrorsMiddleWare(RequestDelegate next)
-            {
-                _next = next;
-            }
+        private readonly RequestDelegate _next;
 
-            public async Task Invoke(HttpContext httpContext, ILogger<Startup> logger)
-            {
-                try
-                {
-                    await _next(httpContext);
-                }
-                catch (Exception ex)
-                {
-                    logger.LogInformation(ex.Message);
-                    httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                }
-
-            }
+        public ErrorsMiddleWare(RequestDelegate next)
+        {
+            _next = next;
         }
 
-        // Extension method used to add the middleware to the HTTP request pipeline.
-        public static class ErrorsMiddlewareExtensions
+        public async Task Invoke(HttpContext httpContext, ILogger<Startup> logger)
         {
-            public static IApplicationBuilder UseErrorsMiddleWare(this IApplicationBuilder builder)
+            try
             {
-                return builder.UseMiddleware<ErrorsMiddleWare>();
+                await _next(httpContext);
             }
+            catch (Exception ex)
+            {
+                logger.LogInformation(ex.Message);
+                httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            }
+
         }
     }
+
+    // Extension method used to add the middleware to the HTTP request pipeline.
+    public static class ErrorsMiddlewareExtensions
+    {
+        public static IApplicationBuilder UseErrorsMiddleWare(this IApplicationBuilder builder)
+        {
+            return builder.UseMiddleware<ErrorsMiddleWare>();
+        }
+    }
+}
 

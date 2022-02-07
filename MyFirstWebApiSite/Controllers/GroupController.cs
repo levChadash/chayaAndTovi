@@ -6,12 +6,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using BL;
 using DTO;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MyFirstWebApiSite.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+   // [AllowAnonymous]
     public class GroupController : ControllerBase
     {
         // GET: api/<GroupController>
@@ -23,6 +26,7 @@ namespace MyFirstWebApiSite.Controllers
             this.groupBL = groupBL; ;
         }
         // GET: api/<GroupController>
+     //   [EnableCors("AllowAll")]
         [HttpGet]
         public async Task<List<GroupDTO>> GetGroup()
         {
