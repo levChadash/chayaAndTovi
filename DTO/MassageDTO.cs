@@ -11,6 +11,7 @@ namespace DTO
         public int Id { get; set; }
         public int? GroupId { get; set; }
         public string Text { get; set; }
+        public DateTime Time { get; set; }
 
     }
 }

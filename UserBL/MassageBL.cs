@@ -39,7 +39,9 @@ namespace BL
         }
         public async Task<int> Post(MassageDTO massage)
         {
+
            Massage mm= mapper.Map<MassageDTO,Massage >(massage);
+            mm.Time = DateTime.Now;
             return await mdl.Post(mm);
         }
         public async Task<int> PostText(string text)

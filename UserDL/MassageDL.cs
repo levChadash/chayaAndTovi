@@ -17,12 +17,14 @@ namespace DL
         }
         public async Task<List<Massage>> GetAllMassages()
         {
-            return await dmc.Massages.ToListAsync();
-         
+            List<Massage> l = await dmc.Massages.ToListAsync();
+            return l;
+
+
         }
         public async Task<List<Massage>> GetMassagesByGroupId(int groupId)
         {
-            List < Massage > l = await dmc.Massages.Where(m => m.GroupId == groupId).ToListAsync();
+            List < Massage > l = await dmc.Massages.Where(m => m.GroupId == groupId|| m.GroupId == null).ToListAsync();
             return l;
         }
         public async Task<Massage> GetMassagesById(int id)

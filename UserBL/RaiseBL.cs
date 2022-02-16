@@ -21,7 +21,7 @@ namespace BL
             this.mapper = mapper;
         }
 
-        public async Task<List<DTO.RaiseDTO>> GetRaise()
+        public async Task<List<RaiseDTO>> GetRaise()
         {
             List<Raise> lr = await raiseDL.GetRaise();
             List<RaiseDTO> lrDTO = mapper.Map<List<Raise>, List<RaiseDTO>>(lr);
