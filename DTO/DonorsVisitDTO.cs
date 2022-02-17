@@ -20,5 +20,7 @@ namespace DTO
         public int year { get; set; }
         public TimeSpan? VisitDuration { get; set; }
 
+
+
     }
 }

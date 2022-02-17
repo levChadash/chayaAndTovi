@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 #nullable disable
@@ -16,7 +17,9 @@ namespace DTO
         public int GroupNum { get; set; }
         public string Password { get; set; }
         public bool WithCar { get; set; }
+        [NotMapped]
+        public string Token { get; set; }
 
-        
+
     }
 }

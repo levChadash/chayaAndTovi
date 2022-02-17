@@ -9,6 +9,8 @@ namespace DL
         Task<bool> DeleteDonorVisit(int id, int year);
         Task<List<DonorsVisit>> GetDonorsVisits();
         Task<List<DonorsVisit>> GetDonorsVisitsByYear(int year);
+        
+        Task<List<DonorsVisit>> GetDonorsVisitsByGroupId(int id);
         Task<DonorsVisit> GetDonorVisit(int id, int year);
         Task<List<DonorsVisit>> GetListOfVisitsByRaise(int id, int year);
         Task<List<RisingVisit>> GetRaisesVisits();

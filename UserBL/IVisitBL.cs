@@ -10,6 +10,8 @@ namespace BL
         Task<bool> DeleteDonorVisit(int id, int year);
         Task<List<DonorsVisitDTO>> GetDonorsVisits();
         Task<List<DonorsVisitDTO>> GetDonorsVisitsByYear(int year);
+        Task<List<VisitDTO>> GetDonorsVisitsByGroupId(int id);
+
         Task<DonorsVisitDTO> GetDonorVisit(int id, int year);
         Task<List<DonorsVisitDTO>> GetListOfVisitsByRaise(int id, int year);
         Task<List<RisingVisitDTO>> GetRaisesVisits();
@@ -17,5 +19,6 @@ namespace BL
         Task<bool> PostRaiseVisit(RisingVisitDTO rv);
         Task<bool> PutDonorVisit(int id, DonorsVisitDTO dv);
         Task<bool> PutRaiseVisit(int id, RisingVisitDTO rv);
+        
     }
 }
