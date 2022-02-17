@@ -33,6 +33,12 @@ namespace MyFirstWebApiSite.Controllers
         {
             return await visitbl.GetRaisesVisits();
         }
+        [HttpGet("DonorsByGroup/{id}")]
+        public async Task<List<DonorsVisitDTO>> GetVisitsByGroup(int id)
+        {
+            return await visitbl.GetVisitsByGroup(id);
+        }
+
         [HttpGet("raise/{id}/{year}")]
         public async Task<List<DonorsVisitDTO>> GetListOfVisitsByRaise(int id, int year)
         {

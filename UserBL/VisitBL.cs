@@ -33,6 +33,13 @@ namespace BL
             List<RisingVisitDTO> lrDTO = mapper.Map<List<RisingVisit>, List<RisingVisitDTO>>(lr);
             return lrDTO;
         }
+
+        public async Task<List<DonorsVisitDTO>> GetVisitsByGroup(int id)
+        {
+            List<DonorsVisit> ld = await visitDL.GetVisitsByGroup(id);
+            List<DonorsVisitDTO> ldDTO = mapper.Map<List<DonorsVisit>, List<DonorsVisitDTO>>(ld);
+            return ldDTO;
+        }
         public async Task<List<DonorsVisitDTO>> GetListOfVisitsByRaise(int id, int year)
         {
             List<DonorsVisit> ld = await visitDL.GetListOfVisitsByRaise(id, year);

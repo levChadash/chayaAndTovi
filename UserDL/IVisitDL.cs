@@ -11,6 +11,7 @@ namespace DL
         Task<List<DonorsVisit>> GetDonorsVisitsByYear(int year);
         Task<DonorsVisit> GetDonorVisit(int id, int year);
         Task<List<DonorsVisit>> GetListOfVisitsByRaise(int id, int year);
+        Task<List<DonorsVisit>> GetVisitsByGroup(int id);
         Task<List<RisingVisit>> GetRaisesVisits();
         Task<bool> PostDonorVisit(DonorsVisit dv);
         Task<bool> PostRaiseVisit(RisingVisit rv);

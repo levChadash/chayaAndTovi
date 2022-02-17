@@ -13,6 +13,7 @@ namespace BL
         Task<DonorsVisitDTO> GetDonorVisit(int id, int year);
         Task<List<DonorsVisitDTO>> GetListOfVisitsByRaise(int id, int year);
         Task<List<RisingVisitDTO>> GetRaisesVisits();
+        Task<List<DonorsVisitDTO>> GetVisitsByGroup(int id);
         Task<bool> PostDonorVisit(DonorsVisitDTO dv);
         Task<bool> PostRaiseVisit(RisingVisitDTO rv);
         Task<bool> PutDonorVisit(int id, DonorsVisitDTO dv);

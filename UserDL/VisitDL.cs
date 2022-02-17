@@ -20,13 +20,19 @@ namespace DL
         }
         public async Task<List<DonorsVisit>> GetDonorsVisits()
         {
-            List<DonorsVisit> lv = await dmc.DonorsVisits.ToListAsync();
+            List<DonorsVisit> lv = await dmc.DonorsVisits.Include(v => v.Donor).Include(v => v.Group).Include(v => v.PreferredTime).Include(v => v.Status).ToListAsync();
             return lv;
         }
 
         public async Task<List<RisingVisit>> GetRaisesVisits()
         {
             List<RisingVisit> lv = await dmc.RisingVisits.ToListAsync();
+            return lv;
+        }
+
+        public async Task<List<DonorsVisit>> GetVisitsByGroup(int id)
+        {
+            List<DonorsVisit> lv = await dmc.DonorsVisits.Where(v => v.Group.Id == id&&v.Status.Happen==false).Include(v=>v.Donor).ThenInclude(d=>d.Contact).Include(v => v.Group).Include(v => v.PreferredTime).Include(v => v.Status).ToListAsync();//
             return lv;
         }
         public async Task<List<DonorsVisit>> GetListOfVisitsByRaise(int id, int year)
@@ -58,7 +64,7 @@ namespace DL
 
         public async Task<List<DonorsVisit>> GetDonorsVisitsByYear(int year)
         {
-            List<DonorsVisit> ld = await dmc.DonorsVisits.Where(d => d.year == year).ToListAsync();
+            List<DonorsVisit> ld = await dmc.DonorsVisits.Where(d => d.year == year).Include(d=>d.Donor).ToListAsync();
             return ld;
         }
 
