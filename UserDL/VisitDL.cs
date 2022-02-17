@@ -67,7 +67,13 @@ namespace DL
             List<DonorsVisit> ld = await dmc.DonorsVisits.Where(d => d.year == year).Include(d=>d.Donor).ToListAsync();
             return ld;
         }
-
+        public async Task<List<DonorsVisit>> GetDonorsVisitsByGroupId(int id)
+        {
+            List<DonorsVisit> ld = await dmc.DonorsVisits.Where(d => d.GroupId == id).Include(a=>a.Donor )
+                .Where(c=>c.DonorId==c.Donor.Id).ToListAsync();
+            return ld;
+        }
+        
         public async Task<bool> PostDonorVisit(DonorsVisit dv)
         {
             await dmc.DonorsVisits.AddAsync(dv);

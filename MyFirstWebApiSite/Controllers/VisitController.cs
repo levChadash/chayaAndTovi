@@ -55,6 +55,11 @@ namespace MyFirstWebApiSite.Controllers
         {
             return await visitbl.GetDonorsVisitsByYear(year);
         }
+        [HttpGet("group/{GroupId}")]
+        public async Task<List<VisitDTO>> GetDonorsVisitsByGroupId(int GroupId)
+        {
+            return await visitbl.GetDonorsVisitsByGroupId(GroupId);
+        }
         [HttpPost("donor")]
         public async Task<bool> PostDonorVisit([FromBody] DonorsVisitDTO dv)
         {

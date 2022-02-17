@@ -2,9 +2,13 @@
 using DL;
 using DTO;
 using Entity;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,10 +18,12 @@ namespace BL
     {
         IGroupDL gdl;
         IMapper mapper;
-        public GroupBL(IGroupDL gdl,IMapper mapper)
+        IConfiguration _configuration;
+        public GroupBL(IGroupDL gdl,IMapper mapper, IConfiguration configuration)
         {
             this.gdl = gdl;
             this.mapper = mapper;
+            _configuration = configuration;
         }
 
         public async Task<GroupDTO> GetGroupByIdOfHead(int id)
@@ -41,12 +47,32 @@ namespace BL
             Group g = await gdl.GetGroupByPassword(pass);
             if (g == null)
                 return null;
-            string n = g.TeamHead.FirstName+" "+g.TeamHead.LastName;
-            GroupDTO gDTO = mapper.Map<Group, GroupDTO>(g);
-             if (n==name)
-                 return gDTO;
-             else
-                 return null;
+            string n = g.TeamHead.FirstName + " " + g.TeamHead.LastName;
+            if (n != name)
+                return null;
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(_configuration.GetSection("key").Value);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, g.TeamHead.FirstName.ToString())
+                }),
+                Expires = DateTime.UtcNow.AddDays(7),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            g.Token = tokenHandler.WriteToken(token);
+            return WithoutPassword(g);
+          
+           
+        }
+        public  GroupDTO WithoutPassword(Group user)
+        {
+            user.Password = null;
+            GroupDTO gDTO = mapper.Map<Group, GroupDTO>(user);
+            return gDTO;
         }
 
 
