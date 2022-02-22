@@ -34,6 +34,7 @@ namespace MyFirstWebApiSite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddCors(options =>
             {
@@ -82,7 +83,7 @@ namespace MyFirstWebApiSite
 
             services.AddControllers().AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNameCaseInsensitive = false);
 
-            services.AddAutoMapper(typeof(Startup));
+            
             services.AddDbContext<DonationManagementContext>(options => options.UseSqlServer(
               Configuration.GetConnectionString("DonationManagement")), ServiceLifetime.Scoped);
 

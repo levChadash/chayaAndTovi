@@ -62,10 +62,10 @@ namespace BL
             return ldDTO;
         }
         
-        public async Task<List<VisitDTO>> GetDonorsVisitsByGroupId(int id)
+        public async Task<List<DonorsVisitDTO>> GetDonorsVisitsByGroupId(int id)
         {
             List<DonorsVisit> ld = await visitDL.GetDonorsVisitsByGroupId(id);
-            List<VisitDTO> ldDTO = mapper.Map<List<DonorsVisit>, List<VisitDTO>>(ld);
+            List<DonorsVisitDTO> ldDTO = mapper.Map<List<DonorsVisit>, List<DonorsVisitDTO>>(ld);
             return ldDTO;
         }
         public async Task<bool> PostDonorVisit(DonorsVisitDTO dv)
