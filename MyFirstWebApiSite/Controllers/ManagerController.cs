@@ -20,22 +20,16 @@ namespace MyFirstWebApiSite.Controllers
         {
             this.Managerbl = Managerbl;
         }
-        // GET: api/<Manager1Controller>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        
 
         // GET api/<Manager1Controller>/5
         [HttpGet("{managerName}/{password}")]
-        public async Task<ActionResult<Manager>> Get(string managerName, string password)
+        public async Task<Manager> Get(string managerName, string password)
         {
 
             Manager m = await Managerbl.GetManager(managerName, password);
-            if (m != null)
-                return m;
-            return NoContent();
+
+            return m;
         }
 
         // POST api/<Manager1Controller>

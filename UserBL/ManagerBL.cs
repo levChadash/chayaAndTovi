@@ -14,7 +14,10 @@ namespace BL
         public async Task<Manager> GetManager(string managerName, string password)
         {
 
-            return await managerdl.GetManager(managerName, password);
+            Manager m= await managerdl.GetManager(managerName, password);
+            if (m!=null && m.Password == password)
+                return m;
+            return null;
         }
         public void PutManager(string managerName, string password, string newPassword)
         {

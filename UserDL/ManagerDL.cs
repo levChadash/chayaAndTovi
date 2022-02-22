@@ -14,8 +14,10 @@ namespace DL
         }
         public async Task <Manager> GetManager(string managerName, string password)
         {
-            return await dmc.Managers.SingleOrDefaultAsync(m=>m.ManagerName== managerName&&m.Password==password);
-          
+            var m = await dmc.Managers.Where(m => m.ManagerName == managerName).FirstOrDefaultAsync();
+            return m;
+
+
         }
  
         public async void PutManager(string managerName, string password, string newPassword)
@@ -25,8 +27,6 @@ namespace DL
             {    manager.Password = newPassword;
                  await dmc.SaveChangesAsync();
             }
-
-
 
         }
     }
