@@ -32,7 +32,8 @@ namespace DL
 
         public async Task<List<DonorsVisit>> GetVisitsByGroup(int id)
         {
-            List<DonorsVisit> lv = await dmc.DonorsVisits.Where(v => v.Group.Id == id&&v.Status.Happen==false).Include(v=>v.Donor).ThenInclude(d=>d.Contact).Include(v => v.Group).Include(v => v.PreferredTime).Include(v => v.Status).ToListAsync();//
+            List<DonorsVisit> lv = await dmc.DonorsVisits.Where(v => v.Group.Id == id&&v.Status.Happen==false).Include(v=>v.Donor).ThenInclude(d=>d.Contact).Include(v => v.Group)
+                .Include(v => v.PreferredTime).Include(v => v.Status).Include(v=>v.PreferredTime) .ToListAsync();//
             return lv;
         }
         public async Task<List<DonorsVisit>> GetListOfVisitsByRaise(int id, int year)
