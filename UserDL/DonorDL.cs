@@ -18,13 +18,13 @@ namespace DL
         }
         public async Task<List<Donor>> GetDonors()
         {
-            List<Donor> ld = await dmc.Donors.ToListAsync();
+            List<Donor> ld = await dmc.Donors.Include(d=>d.Contact).ToListAsync();
             return ld;
         }
 
         public async Task<List<Donor>> GetDonor(string fn, string ln)
         {
-            List<Donor> ld = await dmc.Donors.Where(d => d.FirstName == fn && d.LastName == ln).ToListAsync();
+            List<Donor> ld = await dmc.Donors.Where(d => d.FirstName == fn && d.LastName == ln).Include(d => d.Contact).ToListAsync();
             return ld;
         }
 

@@ -20,7 +20,7 @@ namespace DL
         }
         public async Task<List<DonorsVisit>> GetDonorsVisits()
         {
-            List<DonorsVisit> lv = await dmc.DonorsVisits.Include(v => v.Donor).Include(v => v.Group).Include(v => v.PreferredTime).Include(v => v.Status).ToListAsync();
+            List<DonorsVisit> lv = await dmc.DonorsVisits.Include(v => v.Donor).ThenInclude(d=>d.Contact).Include(v => v.Group).Include(v => v.PreferredTime).Include(v => v.Status).ToListAsync();
             return lv;
         }
 

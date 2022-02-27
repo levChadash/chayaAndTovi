@@ -20,7 +20,7 @@ namespace DL
 
         public async Task<Group> GetGroupByIdOfHead(int id)
         {
-            Group g = await dmc.Groups.Where(g => g.TeamHeadId == id).FirstOrDefaultAsync();
+            Group g = await dmc.Groups.Where(g => g.TeamHeadId == id).Include(g => g.TeamHead).FirstOrDefaultAsync();
             return g;
         }
 
@@ -37,7 +37,7 @@ namespace DL
 
         public async Task<Group> GetGroupById(int id)
         {
-            var g = await dmc.Groups.Where(g => g.Id == id).FirstOrDefaultAsync();
+            var g = await dmc.Groups.Where(g => g.Id == id).Include(g => g.TeamHead).FirstOrDefaultAsync();
             return g;
            
         }
@@ -51,14 +51,14 @@ namespace DL
 
         public async Task<Group> GetGroupByNum(int num)
         {
-            Group g = await dmc.Groups.Where(g => g.GroupNum == num).FirstOrDefaultAsync();
+            Group g = await dmc.Groups.Where(g => g.GroupNum == num).Include(g => g.TeamHead).FirstOrDefaultAsync();
             return g;
         }
 
 
         public async Task<List<Group>> GetGroups()
         {
-            List<Group> lg = await dmc.Groups.ToListAsync();
+            List<Group> lg = await dmc.Groups.Include(g=>g.TeamHead).ToListAsync();
             return lg;
         }
         public async Task<bool> PostGroup(Group g)

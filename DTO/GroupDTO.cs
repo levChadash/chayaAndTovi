@@ -13,6 +13,7 @@ namespace DTO
         public int Id { get; set; }
 
         public int TeamHeadId { get; set; }
+        public string TeamHeadName { get; set; }
         public int Year { get; set; }
         public int GroupNum { get; set; }
         public string Password { get; set; }

@@ -12,6 +12,7 @@ namespace Entity
         public int? GroupId { get; set; }
         public string Text { get; set; }
         public DateTime Time { get; set; }
+        public bool IsRead { get; set; }
         //
         public virtual Group Group { get; set; }
     }
