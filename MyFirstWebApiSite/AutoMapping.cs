@@ -29,7 +29,7 @@ namespace MyFirstWebApiSite
                 .ReverseMap();
           
          // CreateMap<Group, GroupDTO>().ForMember(gDTO=>gDTO.TeamHead,opts=>opts.MapFrom(src=>src.TeamHead.FirstName+" "+src.TeamHead.LastName)).ReverseMap();
-            CreateMap<Group, GroupDTO>().ReverseMap();
+            CreateMap<Group, GroupDTO>().ForMember(g => g.TeamHeadName, opts => opts.MapFrom(src => src.TeamHead.FirstName+" "+ src.TeamHead.LastName)).ReverseMap();
             CreateMap<Massage, MassageDTO>().ForMember(m => m.Group, opts => opts.MapFrom(src => src.Group.GroupNum)).ReverseMap();
             CreateMap<Raise, RaiseDTO>().ReverseMap(); ;
             CreateMap<RaisesInGroup, RaisesInGroupDTO>().ReverseMap();
