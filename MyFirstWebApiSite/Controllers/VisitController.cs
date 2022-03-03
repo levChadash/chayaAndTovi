@@ -60,6 +60,13 @@ namespace MyFirstWebApiSite.Controllers
         {
             return await visitbl.GetDonorsVisitsByGroupId(GroupId);
         }
+        [HttpGet("groupSum/{GroupId}")]
+        public async Task<int> GetVisitsSumByGroup(int GroupId)
+        {
+            return await visitbl.GetVisitsSumByGroup(GroupId);
+
+        }
+
         [HttpPost("donor")]
         public async Task<bool> PostDonorVisit([FromBody] DonorsVisitDTO dv)
         {

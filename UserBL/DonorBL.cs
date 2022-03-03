@@ -40,6 +40,11 @@ namespace BL
             return ldDTO;
         }
 
+        public async Task<List<Contact>> GetContacts()
+        {
+            return await ddl.GetContacts();
+        }
+
         public async Task<bool> PostDonor(DonorDTO d)
         {
             Donor dd = mapper.Map<DonorDTO, Donor>(d);

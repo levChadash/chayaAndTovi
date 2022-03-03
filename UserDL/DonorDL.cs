@@ -35,6 +35,11 @@ namespace DL
             Donor d = await dmc.Donors.FindAsync(id);
             return d;
         }
+
+        public async Task<List<Contact>> GetContacts()
+        {
+            return await dmc.Contacts.ToListAsync();
+        }
         public async Task<bool> PostDonor(Donor d)
         {
             await dmc.Donors.AddAsync(d);

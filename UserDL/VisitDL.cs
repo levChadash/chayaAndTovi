@@ -33,8 +33,21 @@ namespace DL
         public async Task<List<DonorsVisit>> GetVisitsByGroup(int id)
         {
             List<DonorsVisit> lv = await dmc.DonorsVisits.Where(v => v.Group.Id == id&&v.Status.Happen==false).Include(v=>v.Donor).ThenInclude(d=>d.Contact).Include(v => v.Group)
-                .Include(v => v.PreferredTime).Include(v => v.Status).Include(v=>v.PreferredTime) .ToListAsync();//
+                .Include(v => v.PreferredTime).Include(v => v.Status).Include(v=>v.PreferredTime) .ToListAsync();
             return lv;
+        }
+
+        public async Task<int> GetVisitsSumByGroup(int id)
+        {
+            //.Select(s => s.DonationAmount) && v.Status.Happen == true
+            List<int?> lv = await dmc.DonorsVisits.Where(v => v.Group.Id == id && v.Status.Happen == true).Select(s => s.DonationAmount).ToListAsync();
+            int? sum = 0;
+            
+           for(int i=0; i<lv.Count; i++)
+            {
+                sum += lv[i];
+            }
+            return (int)sum;
         }
         public async Task<List<DonorsVisit>> GetListOfVisitsByRaise(int id, int year)
         {
@@ -70,8 +83,8 @@ namespace DL
         }
         public async Task<List<DonorsVisit>> GetDonorsVisitsByGroupId(int id)
         {
-            List<DonorsVisit> ld = await dmc.DonorsVisits.Where(d => d.GroupId == id).Include(a=>a.Donor )
-                .Where(c=>c.DonorId==c.Donor.Id).ToListAsync();
+            List<DonorsVisit> ld = await dmc.DonorsVisits.Where(d => d.GroupId == id).Include(a=>a.Donor)
+                .ToListAsync();
             return ld;
         }
         

@@ -68,6 +68,12 @@ namespace BL
             List<DonorsVisitDTO> ldDTO = mapper.Map<List<DonorsVisit>, List<DonorsVisitDTO>>(ld);
             return ldDTO;
         }
+
+        public async Task<int> GetVisitsSumByGroup(int id)
+        {
+            return await visitDL.GetVisitsSumByGroup(id);
+
+        }
         public async Task<bool> PostDonorVisit(DonorsVisitDTO dv)
         {
             DonorsVisit dd= mapper.Map< DonorsVisitDTO, DonorsVisit> (dv);
