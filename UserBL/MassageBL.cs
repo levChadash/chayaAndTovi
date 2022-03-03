@@ -48,6 +48,11 @@ namespace BL
         {
             return await mdl.PostText(text);
         }
+        public async Task<bool> IsRead(int id)
+        {
+           
+            return await mdl.IsRead(id);
+        }
         public async Task<bool> Delete()
         {
             return await mdl.Delete();

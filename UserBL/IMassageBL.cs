@@ -8,6 +8,8 @@ namespace BL
     public interface IMassageBL
     {
         Task<bool> Delete();
+        Task<bool> IsRead(int id);
+
         Task<bool> DeleteById(int id);
         Task<List<MassageDTO>> GetAllMassages();
         Task<List<MassageDTO>> GetMassagesByGroupId(int groupId);
