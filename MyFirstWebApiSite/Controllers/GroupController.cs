@@ -58,7 +58,7 @@ namespace MyFirstWebApiSite.Controllers
         }
 
         [HttpGet("raises/{id}")]
-        public async Task<List<DTO.RaiseDTO>> GetListOfRaisesInGroup(int id)
+        public async Task<List<RaiseDTO>> GetListOfRaisesInGroup(int id)
         {
             return await groupBL.GetListOfRaisesInGroup(id);
         }

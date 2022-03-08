@@ -68,6 +68,10 @@ namespace BL
             List<DonorsVisitDTO> ldDTO = mapper.Map<List<DonorsVisit>, List<DonorsVisitDTO>>(ld);
             return ldDTO;
         }
+        public async Task<List<Status>> GetStatuses()
+        {
+            return await visitDL.GetStatuses();
+        }
 
         public async Task<int> GetVisitsSumByGroup(int id)
         {

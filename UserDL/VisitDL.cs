@@ -76,6 +76,12 @@ namespace DL
             return d;
         }
 
+        public async Task<List<Status>> GetStatuses()
+        {
+            List<Status> ls = await dmc.Statuses.ToListAsync();
+            return ls;
+        }
+
         public async Task<List<DonorsVisit>> GetDonorsVisitsByYear(int year)
         {
             List<DonorsVisit> ld = await dmc.DonorsVisits.Where(d => d.year == year).Include(d=>d.Donor).ToListAsync();

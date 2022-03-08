@@ -20,7 +20,5 @@ namespace DTO
         public bool WithCar { get; set; }
         [NotMapped]
         public string Token { get; set; }
-
-
     }
 }

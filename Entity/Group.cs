@@ -26,14 +26,10 @@ namespace Entity
         [NotMapped]
         public string Token { get; set; }
 
-        //
-        public int? PreferredTimeId { get; set; }
-        //
         public virtual Time PreferredTime { get; set; }
         //
         public virtual Raise TeamHead { get; set; }
         //
-        [JsonIgnore]
         public virtual ICollection<DonorsVisit> DonorsVisits { get; set; }
         //
         public virtual ICollection<Massage> Massages { get; set; }

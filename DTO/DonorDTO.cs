@@ -16,8 +16,11 @@ namespace DTO
         public string City { get; set; }
         public string Street { get; set; }
         public int HouseNum { get; set; }
+        public int? ContactId { get; set; }
         public string? Contact { get; set; }
         public int? Degree { get; set; }
+
+
 
 
     }
