@@ -13,8 +13,11 @@ namespace DTO
         public int DonorId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string address { get; set; }
+        public string street { get; set; }
         public string City { get; set; }
+        public int houseNum { get; set; }
+
+    
         public string Contact { get; set; }
         public int? Degree { get; set; }
         public int? DonationAmount { get; set; }

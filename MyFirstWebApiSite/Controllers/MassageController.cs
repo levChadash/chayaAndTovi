@@ -38,6 +38,11 @@ namespace MyFirstWebApiSite.Controllers
         {
             return await massageBL.GetMassagesById(id);
         }
+        [HttpGet("{id}/read")]
+        public async Task<bool> get(int id)
+        {
+            return await massageBL.IsRead(id);
+        }
 
         // POST api/<MassageController>
         [HttpPost]
@@ -51,7 +56,7 @@ namespace MyFirstWebApiSite.Controllers
         {
             return await massageBL.PostText(text);
         }
-
+       
         // DELETE api/<MassageController>/5
         [HttpDelete]
         public async Task<bool> Delete()
@@ -65,5 +70,6 @@ namespace MyFirstWebApiSite.Controllers
         {
             return await massageBL.DeleteById(id);
         }
+
     }
 }

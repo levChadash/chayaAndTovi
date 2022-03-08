@@ -7,6 +7,7 @@ namespace DL
   public  interface IMassageDL
     {
         Task<bool> Delete();
+        Task<bool> IsRead(int id);
         Task<bool> DeleteById(int id);
         Task<List<Massage>> GetAllMassages();
         Task<List<Massage>> GetMassagesByGroupId(int groupId);

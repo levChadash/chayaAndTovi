@@ -42,10 +42,20 @@ namespace DL
             Massage massage=new Massage();
             massage.Text = text;
             massage.GroupId = null;
+            massage.IsRead = false;
             await dmc.Massages.AddAsync(massage);
             await dmc.SaveChangesAsync();
             return massage.Id;
 
+        }
+        public async Task<bool> IsRead(int id)
+        {
+            var r2 = await dmc.Massages.FindAsync(id);
+            if (r2 == null)
+                return false;
+            r2.IsRead = !r2.IsRead;
+            await dmc.SaveChangesAsync();
+            return true;
         }
         public async Task<bool> Delete()
         {
