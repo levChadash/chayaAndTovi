@@ -11,7 +11,7 @@ namespace Entity
         public Time()
         {
             DonorsVisits = new HashSet<DonorsVisit>();
-            Groups = new HashSet<Group>();
+            //Groups = new HashSet<Group>();
         }
 
         public int Id { get; set; }
@@ -19,6 +19,6 @@ namespace Entity
         //
         public virtual ICollection<DonorsVisit> DonorsVisits { get; set; }
         //
-        public virtual ICollection<Group> Groups { get; set; }
+        //public virtual ICollection<Group> Groups { get; set; }
     }
 }

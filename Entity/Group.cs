@@ -26,7 +26,6 @@ namespace Entity
         [NotMapped]
         public string Token { get; set; }
 
-        public virtual Time PreferredTime { get; set; }
         //
         public virtual Raise TeamHead { get; set; }
         //

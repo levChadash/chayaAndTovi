@@ -22,7 +22,7 @@ namespace Entity
         public int StatusId { get; set; }
         public int GroupId { get; set; }
         public int year { get; set; }
-        public TimeSpan? VisitDuration { get; set; }
+        public int VisitDuration { get; set; }
         //
         public virtual Donor Donor { get; set; }
         //

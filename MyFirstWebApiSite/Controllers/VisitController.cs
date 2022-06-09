@@ -26,7 +26,8 @@ namespace MyFirstWebApiSite.Controllers
         [HttpGet("donors")]
         public async Task<List<DonorsVisitDTO>> GetDonorsVisits()
         {
-            return await visitbl.GetDonorsVisits();
+            return
+                await visitbl.GetDonorsVisits();
         }
         [HttpGet("raises")]
         public async Task<List<RisingVisitDTO>> GetRaisesVisits()

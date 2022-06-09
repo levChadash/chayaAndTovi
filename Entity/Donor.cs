@@ -19,7 +19,7 @@ namespace Entity
         public string City { get; set; }
         public string Street { get; set; }
         public int HouseNum { get; set; }
-        public int? ContactId { get; set; }
+        public int ContactId { get; set; }
         public int? Degree { get; set; }
         //
         public virtual Contact Contact { get; set; }

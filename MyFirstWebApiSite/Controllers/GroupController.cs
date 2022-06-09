@@ -35,7 +35,7 @@ namespace MyFirstWebApiSite.Controllers
 
         //[HttpPost("login")]
         [AllowAnonymous]
-        [HttpPost]
+        [HttpPost("teamHead")]
         public async Task<GroupDTO> GetGroupByPassword([FromBody] LoginTeamHeadDTO user)
         {
             return await groupBL.GetGroupByPassword(user.Password, user.TeamHeadName);
@@ -66,17 +66,17 @@ namespace MyFirstWebApiSite.Controllers
         //[Route("[action]/{IdOfHead}")]
         [HttpGet("IdOfHead/{IdOfHead}")]
 
-        public async Task<GroupDTO> GetGroupByIdOfHead(int id)
+        public async Task<GroupDTO> GetGroupByIdOfHead(int IdOfHead)
         {
-            return await groupBL.GetGroupByIdOfHead(id);
+            return await groupBL.GetGroupByIdOfHead(IdOfHead);
         }
 
         // POST api/<GroupController>
-        //[HttpPost]
-        //public async Task<bool> PostGroup([FromBody] GroupDTO d)
-        //{
-        //    return await groupBL.PostGroup(d);
-        //}
+        [HttpPost]
+        public async Task<bool> PostGroup([FromBody] GroupDTO d)
+        {
+            return await groupBL.PostGroup(d);
+        }
 
         // PUT api/<GroupController>/5
         [HttpPut("{id}")]

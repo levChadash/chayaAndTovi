@@ -17,7 +17,9 @@ namespace DL
         }
         public async Task<List<Massage>> GetAllMassages()
         {
-            List<Massage> l = await dmc.Massages.Include(m=>m.Group).ToListAsync();
+
+            //.Include(m=>m.Group)
+            List<Massage> l = await dmc.Massages.ToListAsync();
             return l;
 
 

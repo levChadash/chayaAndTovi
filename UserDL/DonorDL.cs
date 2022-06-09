@@ -27,7 +27,26 @@ namespace DL
             List<Donor> ld = await dmc.Donors.Where(d => d.FirstName == fn && d.LastName == ln).Include(d => d.Contact).ToListAsync();
             return ld;
         }
-
+        public  async Task<string> getNameOfContact(int? contactId)
+        {
+            if (contactId != null)
+            {
+                var name = await dmc.Contacts.Where(c => c.Id == contactId).FirstAsync();
+                string s = name.ContactType;
+                return s;
+            }
+            else return "לא מוגדר";
+        }
+        public async Task<int> getIdOfContact(string contactName)
+        {
+            if (contactName != null)
+            {
+                var name = await dmc.Contacts.Where(c => c.ContactType == contactName).FirstAsync();
+                int s = name.Id;
+                return s;
+            }
+            else return 16;
+        }
 
 
         public async Task<Donor> GetDonorById(int id)

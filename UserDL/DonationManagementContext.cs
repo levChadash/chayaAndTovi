@@ -150,11 +150,6 @@ namespace DL
                     .HasMaxLength(10)
                     .IsFixedLength(true);
 
-                entity.HasOne(d => d.PreferredTime)
-                    .WithMany(p => p.Groups)
-                    .HasForeignKey(d => d.PreferredTimeId)
-                    .HasConstraintName("FK_Groups_Times");
-
                 entity.HasOne(d => d.TeamHead)
                     .WithMany(p => p.Groups)
                     .HasForeignKey(d => d.TeamHeadId)
